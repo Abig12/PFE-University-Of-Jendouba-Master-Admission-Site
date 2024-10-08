@@ -1,0 +1,338 @@
+<section class="p-2 m-5">
+  <div class="container bg-body pb-5">
+    <div class="justify-content-center">
+      <div class="col-xl-12">
+        <div class="table100 ver1 m-b-110">
+          <div class="table100-head">
+            <table>
+              <thead>
+                <tr class="row100 head">
+                  <th class="cell100 column2 bg-dark"></th>
+                  <th class="cell100 column-th bg-dark">Nom</th>
+                  <th class="cell100 columnp-th bg-dark">Prenom</th>
+                  <th class="cell100 columne-th bg-dark">Email</th>
+                  <th class="cell100 columnt-th bg-dark">Telephone</th>
+                  <th class="cell100 columnc-th bg-dark">Cin</th>
+                  <th class="cell100 columns-th bg-dark">Sexe</th>
+                  <th class="cell100 column5 bg-dark">Etablissement</th>
+                  <th class="cell100 column5 bg-dark"></th>
+                  <th class="cell100 column5 bg-dark"></th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div class="table100-body js-pscroll">
+            <table>
+              <tbody>
+                <tr
+                  class="row100 body"
+                  *ngFor="let item of dataArray; index as i"
+                >
+                  <td class="cell100 column1">{{ i + 1 }}</td>
+                  <td class="cell100 column">{{ item.nom }}</td>
+                  <td class="cell100 column5">{{ item.prenom }}</td>
+                  <td class="cell100 column5">{{ item.email }}</td>
+                  <td class="cell100 column5">{{ item.telephone }}</td>
+                  <td class="cell100 column5">{{ item.passport_cin }}</td>
+                  <td class="cell100 column5">{{ item.sexe }}</td>
+                  <td class="cell100 column4">{{ item.etablissement }}</td>
+                  <td class="cell100 column5 ali">
+                    <button
+                      type="button"
+                      class="button btn--radius-2 btn--green"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                      (click)="
+                        getagentdata(
+                          item.user_id,
+                          item.nom,
+                          item.prenom,
+                          item.email,
+                          item.telephone,
+                          item.passport_cin,
+                          item.sexe,
+                          item.etablissement
+                        )
+                      "
+                    >
+                      <i class="bi bi-pen"></i>
+                    </button>
+                  </td>
+                  <td class="cell100 column5 ali">
+                    <button
+                      type="button"
+                      class="button btn--radius-2 btn--red"
+                      data-bs-toggle="modal"
+                      data-bs-target="#deleteModal"
+                      (click)="delbutton(item.user_id, i)"
+                    >
+                      <i class="bi bi-trash3-fill"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
+    style="margin-left: 20%"
+  >
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header py-3" style="padding: 30px 30px">
+        <h1
+          class="modal-title fs-4"
+          style="margin-left: 40%; color: #dd0025"
+          id="exampleModalLabel"
+        >
+          Modifier l'agents
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="m-2">
+          <form class="form-detail" (ngSubmit)="updateagent(a)" #a="ngForm">
+            <div class="ms-5">
+              <div class="form">
+                <label for="full-name">NOM</label>
+                <input
+                  type="text"
+                  id="nom"
+                  class="input-text"
+                  placeholder="NOM"
+                  name="nom"
+                  #nom="ngModel"
+                  ngModel
+                  [(ngModel)]="dataagents.nom"
+                  required
+                />
+                <div
+                  class="alert alert-danger py-2 my-3"
+                  style="margin-right: 5.5%"
+                  *ngIf="nom.errors?.['required'] && nom.touched"
+                >
+                  le nom est obligatoire
+                </div>
+              </div>
+              <div class="form">
+                <label for="full-name">PRÉNOM</label>
+                <input
+                  type="text"
+                  id="prenom"
+                  class="input-text"
+                  placeholder="PRÉNOM"
+                  name="prenom"
+                  #prenom="ngModel"
+                  ngModel
+                  [(ngModel)]="dataagents.prenom"
+                  required
+                />
+                <div
+                  class="alert alert-danger py-2 my-3"
+                  style="margin-right: 5.5%"
+                  *ngIf="prenom.errors?.['required'] && prenom.touched"
+                >
+                  le prénom est obligatoire
+                </div>
+              </div>
+              <div class="form">
+                <label for="full-name">EMAIL</label>
+                <input
+                  type="text"
+                  id="email"
+                  class="input-text"
+                  placeholder="EMAIL"
+                  name="email"
+                  #email="ngModel"
+                  ngModel
+                  [(ngModel)]="dataagents.email"
+                  required
+                />
+                <div
+                  class="alert alert-danger py-2 my-3"
+                  style="margin-right: 5.5%"
+                  *ngIf="email.errors?.['required'] && email.touched"
+                >
+                  le nom est obligatoire
+                </div>
+              </div>
+              <div class="form">
+                <label for="full-name">NOMBRE DE TELEPHONE</label>
+                <input
+                  type="text"
+                  id="telephone"
+                  class="input-text"
+                  placeholder="NOMBRE DE TELEPHONE"
+                  name="telephone"
+                  #telephone="ngModel"
+                  ngModel
+                  [(ngModel)]="dataagents.telephone"
+                  required
+                />
+                <div
+                  class="alert alert-danger py-2 my-3"
+                  style="margin-right: 5.5%"
+                  *ngIf="telephone.errors?.['required'] && telephone.touched"
+                >
+                  le telephone est obligatoire
+                </div>
+              </div>
+              <div class="form">
+                <label for="full-name">PASSEPORT/CIN </label>
+                <input
+                  type="text"
+                  id="passport_cin"
+                  class="input-text"
+                  placeholder="PASSEPORT/CIN"
+                  name="passport_cin"
+                  #passport_cin="ngModel"
+                  ngModel
+                  [(ngModel)]="dataagents.passport_cin"
+                  required
+                />
+                <div
+                  class="alert alert-danger py-2 my-3"
+                  style="margin-right: 5.5%"
+                  *ngIf="passport_cin.errors?.['required'] && passport_cin.touched"
+                >
+                  le cin est obligatoire
+                </div>
+              </div>
+              <div class="form">
+                <label for="your-email">GENRE</label>
+                <select
+                  id="sexe"
+                  class="form-control form-control-lg"
+                  name="sexe"
+                  #sexe="ngModel"
+                  ngModel
+                  [(ngModel)]="dataagents.sexe"
+                  required
+                  style="color: #999"
+                >
+                  <option value="">Sélectionnez votre genre</option>
+                  <option value="Garçon">Garçon</option>
+                  <option value="Fille">Fille</option>
+                </select>
+                <div
+                  class="alert alert-danger py-2 my-3"
+                  style="margin-right: 5.5%"
+                  *ngIf="sexe.errors?.['required'] && sexe.touched"
+                >
+                  le genre est obligatoire
+                </div>
+              </div>
+              <div class="form">
+                <label for="your-email">ÉTABLISSEMENT</label>
+                <select
+                  id="sexe"
+                  class="form-control form-control-lg"
+                  name="etablissement"
+                  #etablissement="ngModel"
+                  ngModel
+                  [(ngModel)]="dataagents.etablissement"
+                  style="color: #999"
+                >
+                  <option value="">Sélectionnez l'établissement</option>
+                  <option
+                    *ngFor="let item of etabArray"
+                    value="{{ item.nom_etab }}"
+                  >
+                    {{ item.nom_etab }}
+                  </option>
+                </select>
+              </div>
+              <div class="alert alert-success py-3 my-3" *ngIf="messageSucc">
+                {{ messageSucc }}
+              </div>
+              <button type="submit" class="button btn--radius-2 btn--red me-3">
+                Modifier
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer py-3">
+        <button
+          type="button"
+          class="button btn--radius-2 btn--secondary me-3"
+          data-bs-dismiss="modal"
+        >
+          Fermer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Delete Modal -->
+
+<div
+  class="modal fade"
+  id="deleteModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+    style="margin-left: 30%"
+  >
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header py-3" style="padding: 30px 30px">
+        <h1
+          class="modal-title fs-4"
+          style="margin-left: 35%; color: #dd0025"
+          id="exampleModalLabel"
+        >
+          Supprimer l'agent
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="m-5">
+          <h4>Voulez-vous supprimer cet agent ?</h4>
+        </div>
+      </div>
+      <div class="modal-footer py-3">
+        <button
+          type="button"
+          class="button btn--radius-2 btn--red me-3"
+          data-bs-dismiss="modal"
+          (click)="deleteagent(delagent.user_id, delagent.i)"
+        >
+          oui
+        </button>
+        <button
+          type="button"
+          class="button btn--radius-2 btn--secondary me-3"
+          data-bs-dismiss="modal"
+        >
+          non
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

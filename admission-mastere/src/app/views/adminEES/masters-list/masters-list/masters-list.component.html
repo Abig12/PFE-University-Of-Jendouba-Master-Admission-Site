@@ -1,0 +1,328 @@
+<section class="p-2 m-5">
+  <div class="container bg-body pb-5">
+    <div class="justify-content-center">
+      <div class="col-xl-12">
+        <div class="table100 ver1 m-b-110">
+          <div class="table100-head">
+            <table>
+              <thead>
+                <tr class="row100 head">
+                  <th class="cell100 column2 bg-dark"></th>
+                  <th class="cell100 column-et bg-dark">Mastère</th>
+                  <th class="cell100 column-th bg-dark">Date début</th>
+                  <th class="cell100 columnp-th bg-dark">Date fin</th>
+                  <th class="cell100 column5 bg-dark"></th>
+                  <th class="cell100 column5 bg-dark"></th>
+                  <th class="cell100 column5 bg-dark"></th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div class="table100-body js-pscroll">
+            <table>
+              <tbody>
+                <tr
+                  class="row100 body"
+                  *ngFor="let item of dataArray; index as i"
+                >
+                  <td class="cell100 column1">{{ i + 1 }}</td>
+                  <td class="cell100 column4">{{ item.nom_m }}</td>
+                  <td class="cell100 column text-success">
+                    {{ item.date_o }}
+                  </td>
+                  <td class="cell100 column text-danger">
+                    {{ item.date_f }}
+                  </td>
+                  <td class="cell100 column5 ali">
+                    <button
+                      type="button"
+                      class="button btn--radius-2 btn--blue"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal2"
+                      (click)="detmas(item.details)"
+                    >
+                      <i class="bi bi-file-text-fill"></i>
+                    </button>
+                  </td>
+
+                  <td class="cell100 column5 ali">
+                    <button
+                      type="button"
+                      class="button btn--radius-2 btn--green"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                      (click)="
+                        uptmas(
+                          item.cm_id,
+                          item.nom_m,
+                          item.date_o,
+                          item.date_f,
+                          item.details
+                        )
+                      "
+                    >
+                      <i class="bi bi-pen"></i>
+                    </button>
+                  </td>
+                  <td class="cell100 column5 ali">
+                    <button
+                      type="button"
+                      class="button btn--radius-2 btn--red"
+                      data-bs-toggle="modal"
+                      data-bs-target="#deleteModal"
+                      (click)="delbutton(item.cm_id, i)"
+                    >
+                      <i class="bi bi-trash3-fill"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
+    style="margin-left: 20%"
+  >
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header py-3" style="padding: 30px 30px">
+        <h1
+          class="modal-title fs-4"
+          style="margin-left: 40%; color: #dd0025"
+          id="exampleModalLabel"
+        >
+          Modifier le coure de master
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="m-2">
+          <form class="form-detail" (ngSubmit)="updatemas(a)" #a="ngForm">
+            <div class="ms-5">
+              <div class="form">
+                <label for="full-name">NOM DU COURS DE MASTER</label>
+                <input
+                  type="text"
+                  id="nom"
+                  class="input-text"
+                  name="nom_m"
+                  #nom_m="ngModel"
+                  ngModel
+                  [(ngModel)]="datamas.nom_m"
+                  required
+                />
+                <div
+                  class="alert alert-danger py-2 my-3"
+                  style="margin-right: 5.5%"
+                  *ngIf="nom_m.errors?.['required'] && nom_m.touched"
+                >
+                  le nom est obligatoire
+                </div>
+              </div>
+              <div class="form">
+                <label for="full-name">DATE D'OUVERTURE</label>
+                <input
+                  type="date"
+                  id="date_o"
+                  class="input-text"
+                  name="date_o"
+                  #date_o="ngModel"
+                  ngModel
+                  [(ngModel)]="datamas.date_o"
+                  required
+                />
+                <div
+                  class="alert alert-danger py-2 my-3"
+                  style="margin-right: 5.5%"
+                  *ngIf="date_o.errors?.['required'] && date_o.touched"
+                >
+                  le prénom est obligatoire
+                </div>
+              </div>
+              <div class="form">
+                <label for="full-name">DATE D'EXPIRATION</label>
+                <input
+                  type="date"
+                  id="date_f"
+                  class="input-text"
+                  name="date_f"
+                  #date_f="ngModel"
+                  ngModel
+                  [(ngModel)]="datamas.date_f"
+                  required
+                />
+                <div
+                  class="alert alert-danger py-2 my-3"
+                  style="margin-right: 5.5%"
+                  *ngIf="date_f.errors?.['required'] && date_f.touched"
+                >
+                  le nom est obligatoire
+                </div>
+              </div>
+              <div class="form">
+                <label for="full-name">DETAILS DE MASTER</label>
+                <textarea
+                  class="form-control mb-4"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                  style="
+                    font-size: 18px;
+                    padding-bottom: 20%;
+                    resize: none;
+                    width: 94.5%;
+                  "
+                  name="details"
+                  #details="ngModel"
+                  ngModel
+                  [(ngModel)]="datamas.details"
+                  required
+                ></textarea>
+                <div
+                  class="alert alert-danger py-2 my-3"
+                  style="margin-right: 5.5%"
+                  *ngIf="details.errors?.['required'] && details.touched"
+                >
+                  le details est obligatoire
+                </div>
+              </div>
+
+              <div class="alert alert-success py-3 my-3" *ngIf="messageSucc">
+                {{ messageSucc }}
+              </div>
+              <button type="submit" class="button btn--radius-2 btn--red me-3">
+                Modifier
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer py-3">
+        <button
+          type="button"
+          class="button btn--radius-2 btn--secondary me-3"
+          data-bs-dismiss="modal"
+        >
+          Fermer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Details Modal -->
+<div
+  class="modal fade"
+  id="exampleModal2"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
+    style="margin-left: 20%"
+  >
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header py-3" style="padding: 30px 30px">
+        <h1
+          class="modal-title fs-4"
+          style="margin-left: 40%; color: #dd0025"
+          id="exampleModalLabel"
+        >
+          Details sur le master
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="m-2">
+          <p>{{ datadet.details }}</p>
+        </div>
+      </div>
+      <div class="modal-footer py-3">
+        <button
+          type="button"
+          class="button btn--radius-2 btn--secondary me-3"
+          data-bs-dismiss="modal"
+        >
+          Fermer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Modal -->
+
+<div
+  class="modal fade"
+  id="deleteModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+    style="margin-left: 30%"
+  >
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header py-3" style="padding: 30px 30px">
+        <h1
+          class="modal-title fs-4"
+          style="margin-left: 30%; color: #dd0025"
+          id="exampleModalLabel"
+        >
+          Supprimer le cours de master
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="m-5">
+          <h4>Voulez-vous supprimer ce coure de master ?</h4>
+        </div>
+      </div>
+      <div class="modal-footer py-3">
+        <button
+          type="button"
+          class="button btn--radius-2 btn--red me-3"
+          data-bs-dismiss="modal"
+          (click)="deletemas(deleteMasterData.cm_id, deleteMasterData.i)"
+        >
+          oui
+        </button>
+        <button
+          type="button"
+          class="button btn--radius-2 btn--secondary me-3"
+          data-bs-dismiss="modal"
+        >
+          non
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

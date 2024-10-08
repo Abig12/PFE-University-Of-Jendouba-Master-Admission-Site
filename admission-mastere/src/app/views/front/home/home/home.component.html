@@ -1,0 +1,431 @@
+<section
+  id="hero"
+  class="bg-dark text-light text-center text-sm-strat py-5 mt-5"
+>
+  <div class="container">
+    <div class="d-sm-flex align-items-center justify-content-center">
+      <div class="py-3">
+        <h1 class="display-5">
+          Université de <span class="text-info">Jendouba</span>
+        </h1>
+        <p class="py-4 lead mb-1">
+          Patforme de gestion de coucours d'admission au mastére
+        </p>
+        <p class="py-4 lead" id="banner-p" *ngIf="!verfuser">
+          Pour consulter la liste des masters disponibles cliquez sur le bouton
+          "consulter" et pour vous inscrire cliquez sur le bouton "S'inscrire".
+        </p>
+        <div>
+          <button
+            routerLink="/tab-masters"
+            class="btn btn-lg btn-danger mx-2 mb-1"
+          >
+            consulter
+          </button>
+          <button
+            routerLink="/signup"
+            class="btn btn-lg btn-info mx-2 mb-1"
+            *ngIf="!verfuser"
+          >
+            S'inscrire
+          </button>
+        </div>
+      </div>
+      <img
+        class="d-none d-sm-block img-fluid w-50"
+        src="assets\Images\undraw\undraw_save_to_bookmarks_re_8ajf.svg"
+      />
+    </div>
+  </div>
+</section>
+
+<section class="py-5">
+  <div class="container">
+    <div class="row text-center">
+      <h2 class="py-5">Comment déposer une demande de préinscription ?</h2>
+      <div class="col-sm">
+        <div class="card bg-dark text-light mb-4">
+          <div class="h1 mt-3">
+            <i class="bi bi-person-circle" style="color: #0dcaf0"></i>
+          </div>
+          <div class="card-body text-center">
+            <h4 class="card-title">Créez un compte</h4>
+            <p class="card-text">
+              Créez un compte. Consultez, ensuite, votre email pour confirmer
+              l'inscription à la plateforme.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="card bg-dark text-light mb-4">
+          <div class="h1 mt-3">
+            <i class="bi bi-file-earmark-text" style="color: #0dcaf0"></i>
+          </div>
+          <div class="card-body text-center">
+            <h4 class="card-title">Remplir le formulaire</h4>
+            <p class="card-text">
+              Connectez vous avec votre compte, et suivez les étapes pour
+              remplir le formulaire.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="card bg-dark text-light mb-4">
+          <div class="h1 mt-3">
+            <i class="bi bi-folder-fill" style="color: #0dcaf0"></i>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title">Déposez vos candidatures</h5>
+            <p class="card-text">
+              Sélectionnez le parcours souhaité, remplissez les informations
+              demandées et déposez votre candidature.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="card bg-dark text-light mb-4">
+          <div class="h1 mt-3">
+            <i class="bi bi-eye-fill" style="color: #0dcaf0"></i>
+          </div>
+          <div class="card-body text-center">
+            <h4 class="card-title">Consultez vos dossiers</h4>
+            <p class="card-text">
+              Université de Jendouba vous informe de toute information
+              disponible concernant vos dossiers. Consultez votre compte ou en
+              votre email.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="learn" class="py-5" style="background-color: #eeeeee">
+  <div class="container">
+    <div class="row align-items justify-content-center">
+      <div class="col-md">
+        <img
+          src="assets\Images\undraw\undraw_text_files_au1q.svg"
+          alt=""
+          class="img-fluid"
+        />
+      </div>
+      <div class="col-md py-4">
+        <h1>Chaque dossier doit comprendre :</h1>
+        <h5 class="mt-3">
+          1-Une fiche de candidature au mastère choisi dûment remplie. La fiche
+          est à retirer de l’adresse suivante :
+          <a href="http://www.fsjegj.rnu.tn/">www.fsjegj.rnu.tn.</a>
+        </h5>
+        <h5 class="mt-3">
+          2-Des copies certifiées conformes du baccalauréat et de la maîtrise ou
+          de la licence ou d’un diplôme admis en équivalence
+        </h5>
+        <h5 class="mt-3">
+          3-Des copies certifiées conformes des relevés des notes relatifs aux
+          études supérieures (y compris, éventuellement, celui de l’année de
+          redoublement),
+        </h5>
+        <h5 class="mt-3">4-Une copie de la carte d’identité nationale.</h5>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 bg-dark text-light">
+  <div class="container">
+    <div class="row align-items-center justify-content-center flex-row-reverse">
+      <div class="col-md">
+        <img src="/assets/Images/undraw/warning.png" alt="" class="img-fluid" />
+      </div>
+      <div class="col-md py-4">
+        <h2 style="color: #a0031e">
+          Les candidats aux différents mastères (voir liste suivante) doivent :
+        </h2>
+
+        <h6>
+          - Etre titulaires d’une maitrise, licence ou diplôme équivalent dans
+          la discipline correspondant au mastère choisi
+        </h6>
+
+        <h6>- Déposer au plus deux (4) demandes de candidature.</h6>
+        <h2 style="color: #a0031e">Important :</h2>
+
+        <h6>
+          - Un bouton de modification est disponible sur la plateforme pour
+          d’éventuels changements.
+        </h6>
+
+        <h6>- Toute fausse déclaration entraîne le rejet du dossier.</h6>
+
+        <h6>
+          - Les étudiants étrangers doivent eux aussi, obligatoirement, déposer
+          leur candidature sur le site de la faculté :
+        </h6>
+        <a href="http://www.fsjegj.rnu.tn/">www.fsjegj.rnu.tn.</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5" style="background-color: #dadada">
+  <div class="container">
+    <div class="row text-center image-container">
+      <div class="col-sm-4 mb-3">
+        <div class="card" style="width: 18rem">
+          <a
+            ><img
+              src="../../../../../assets/Images/FSJEGJ.png"
+              class="card-img-top"
+              alt="..."
+              href="http://www.fsjegj.rnu.tn/Fr/actualit%C3%A9s-et-ev%C3%A9nements_7_698"
+          /></a>
+          <div class="card-body text-center">
+            <p class="card-text">
+              Faculté des Sciences Juridiques, Économiques et de Gestion de
+              Jendouba (FSJEGJ)
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 mb-3">
+        <div class="card" style="width: 18rem">
+          <a
+            ><img
+              src="../../../../../assets/Images/ISSHJ.jpg"
+              class="card-img-top"
+              alt="..."
+              href="http://www.isshj.rnu.tn/Fr/actualit%C3%A9s_7_851"
+          /></a>
+          <div class="card-body text-center">
+            <p class="card-text">
+              Institut Supérieur des Sciences Humaines de Jendouba (ISSHJ)
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 mb-3">
+        <div class="card" style="width: 18rem">
+          <a
+            ><img
+              src="../../../../../assets/Images/ISPT.png"
+              class="card-img-top"
+              alt="..."
+              href="http://www.isptabarka.agrinet.tn/index.php/fr/"
+          /></a>
+          <div class="card-body text-center">
+            <p class="card-text">Institut Sylvo- Pastoral de Tabarka (ISPT)</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 mb-3">
+        <div class="card" style="width: 18rem">
+          <a
+            ><img
+              src="../../../../../assets/Images/ISLAIB.jpg"
+              class="card-img-top"
+              alt="..."
+              href="http://www.islaib.rnu.tn/Fr/actualit%C3%A9s-et-ev%C3%A9nements_7_643"
+          /></a>
+          <div class="card-body text-center">
+            <p class="card-text">
+              Institut Supérieur des Langues Appliquées et d’Informatique de
+              Béja (ISLAIB)
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 mb-3">
+        <div class="card" style="width: 18rem">
+          <a
+            ><img
+              src="../../../../../assets/Images/ISBB.jpg"
+              class="card-img-top"
+              alt="..."
+              href="https://isbb.rnu.tn/"
+          /></a>
+          <div class="card-body text-center">
+            <p class="card-text">
+              Institut Supérieur de Biotechnologie de Béja (ISBB)
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 mb-3">
+        <div class="card" style="width: 18rem">
+          <a
+            ><img
+              src="../../../../../assets/Images/ESIM.png"
+              class="card-img-top"
+              alt="..."
+              href="http://www.esier.agrinet.tn/"
+          /></a>
+          <div class="card-body text-center">
+            <p class="card-text">
+              École Supérieure des Ingénieurs de Medjez El Bab (ESIMB)
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 mb-3">
+        <div class="card" style="width: 18rem">
+          <a
+            ><img
+              src="../../../../../assets/Images/ISEAHK.gif"
+              class="card-img-top"
+              alt="..."
+              href="http://www.iseahkf.rnu.tn/Fr/accueil_46_3"
+          /></a>
+          <div class="card-body text-center">
+            <p class="card-text">
+              Institut Supérieur des Études Appliquées en Humanités du Kef
+              (ISEAHK)
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 mb-3">
+        <div class="card" style="width: 18rem">
+          <a
+            ><img
+              src="../../../../../assets/Images/ISMTK.jpg"
+              class="card-img-top"
+              alt="..."
+              href="http://www.uj.rnu.tn/Fr/institut-superieur-de-musique-et-de-theatre-du-kef_11_731"
+              style="padding-top: 20px; padding-bottom: 20px"
+          /></a>
+          <div class="card-body text-center">
+            <p class="card-text">
+              Institut Supérieur de Musique et de Théâtre du Kef (ISMTK)
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 mb-3">
+        <div class="card" style="width: 18rem">
+          <a
+            ><img
+              src="../../../../../assets/Images/ISIK.gif"
+              class="card-img-top"
+              alt="..."
+              href="http://www.isikef.rnu.tn/Fr/accueil_46_4"
+              style="padding-top: 55px; padding-bottom: 55px"
+          /></a>
+          <div class="card-body text-center">
+            <p class="card-text">
+              Institut Supérieur de l’Informatique du Kef (ISIK)
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 mb-3">
+        <div class="card" style="width: 18rem">
+          <a
+            ><img
+              src="../../../../../assets/Images/ISSEPK.jpg"
+              class="card-img-top"
+              alt="..."
+              href="http://www.issepk.rnu.tn/Fr/accueil_46_4"
+          /></a>
+          <div class="card-body text-center">
+            <p class="card-text">
+              Institut Supérieur du Sport et de l’Éducation Physique du Kef
+              (ISSEPK)
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 mb-3">
+        <div class="card" style="width: 18rem">
+          <a
+            ><img
+              src="../../../../../assets/Images/ESAK.jpg"
+              class="card-img-top"
+              alt="..."
+              href="http://www.esakef.agrinet.tn/index.php/fr/"
+          /></a>
+          <div class="card-body text-center">
+            <p class="card-text">
+              École Supérieure d’Agriculture du Kef (ESAK)
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4 mb-3">
+        <div class="card" style="width: 18rem">
+          <a
+            ><img
+              src="../../../../../assets/Images/ISSIK.jpg"
+              class="card-img-top"
+              alt="..."
+              href="http://www.issikf.rnu.tn/Fr/accueil_46_4"
+          /></a>
+          <div class="card-body text-center">
+            <p class="card-text">
+              Institut Supérieur des Sciences Infirmières du Kef (ISSIK)
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 mb-3 mx-auto">
+        <div class="card" style="width: 18rem">
+          <a
+            ><img
+              src="../../../../../assets/Images/ISAMS.jpg"
+              class="card-img-top"
+              alt="..."
+              href="http://www.isamsl.rnu.tn/Fr/actualit%C3%A9s-et-ev%C3%A9nements_7_12"
+          /></a>
+          <div class="card-body text-center">
+            <p class="card-text">
+              Institut Supérieur des Arts et Métiers de Siliana (ISAMS)
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-sm-6">
+        <div class="single-box">
+          <img src="assets/Images/logo/logo-nobg3.png" alt="" width="110" />
+          <h3 class="mt-3 ms-2">
+            Université de <span style="color: #940019">Jendouba</span>
+          </h3>
+          <div class="card-area">
+            <i class="fa fa-cc-visa"></i>
+            <i class="fa fa-credit-card"></i>
+            <i class="fa fa-cc-mastercard"></i>
+            <i class="fa fa-cc-paypal"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="single-box"></div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="single-box"></div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="single-box">
+          <h2>Contact</h2>
+          <ul>
+            <li></li>
+            <li>Téléphone : 78.611.300</li>
+            <li>Télécopie : 78.611.299></li>
+            <li>Email : contact@uj.rnu.tn</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

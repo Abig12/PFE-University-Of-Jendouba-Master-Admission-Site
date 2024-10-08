@@ -1,0 +1,243 @@
+<div class="wrapper wrapper--w1050">
+  <div class="card card-5">
+    <div class="card-heading">
+      <h2 class="title">Ajouter des agents</h2>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="addagent(a)" #a="ngForm">
+        <div
+          class="alert alert-danger py-2 my-3"
+          *ngIf="nom.invalid && (nom.dirty || nom.touched)"
+        >
+          <div *ngIf="nom.errors?.['required']">Le nom est obligatoire.</div>
+          <div *ngIf="nom.errors?.['pattern']">
+            Le nom doit être une chaîne de caractères.
+          </div>
+        </div>
+        <div
+          class="alert alert-danger py-2 my-3"
+          *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)"
+        >
+          <div *ngIf="prenom.errors?.['required']">
+            Le prénom est obligatoire.
+          </div>
+          <div *ngIf="prenom.errors?.['pattern']">
+            Le prénom doit être une chaîne de caractères.
+          </div>
+        </div>
+        <div class="form-row m-b-55">
+          <div class="name">NOM ET PRÉNOM</div>
+          <div class="value">
+            <div class="row row-space">
+              <div class="col-2">
+                <div class="input-group-desc">
+                  <input
+                    class="input--style-5"
+                    type="text"
+                    name="nom"
+                    #nom="ngModel"
+                    ngModel
+                    pattern="[a-zA-Z\s]+"
+                    required
+                  />
+                  <label class="label--desc">NOM</label>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="input-group-desc">
+                  <input
+                    class="input--style-5"
+                    type="text"
+                    name="prenom"
+                    #prenom="ngModel"
+                    ngModel
+                    pattern="[a-zA-Z\s]+"
+                    required
+                  />
+                  <label class="label--desc">PRÉNOM</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="alert alert-danger py-2 my-3"
+          *ngIf="email.invalid && (email.dirty || email.touched)"
+        >
+          <div *ngIf="email.errors?.['required']">
+            Le email est obligatoire.
+          </div>
+          <div *ngIf="email.errors?.['email']">
+            L'adresse email doit être au format correct.
+          </div>
+          <div *ngIf="email.errors?.['pattern']">
+            L'adresse email doit être au format correct.
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="name">EMAIL</div>
+          <div class="value">
+            <div class="input-group">
+              <input
+                class="input--style-5"
+                type="email"
+                name="email"
+                #email="ngModel"
+                ngModel
+                required
+                pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="alert alert-danger py-2 my-3"
+          *ngIf="password.invalid && (password.dirty || password.touched)"
+        >
+          <div *ngIf="password.errors?.['required']">
+            le mot de passe est obligatoire
+          </div>
+          <div *ngIf="password.errors?.['minlength']">
+            Le mot de passe doit avoir au moins 6 caractères.
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="name">MOT DE PASSE</div>
+          <div class="value">
+            <div class="input-group">
+              <input
+                class="input--style-5"
+                type="password"
+                name="password"
+                #password="ngModel"
+                ngModel
+                required
+                minlength="8"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="alert alert-danger py-2 my-3"
+          *ngIf="telephone.invalid && (telephone.dirty || telephone.touched)"
+        >
+          <div *ngIf="telephone.errors?.['required']">
+            Le téléphone est obligatoire.
+          </div>
+          <div *ngIf="telephone.errors?.['pattern']">
+            Le téléphone ne doit contenir que des chiffres.
+          </div>
+          <div *ngIf="telephone.errors?.['minlength']">
+            Le téléphone doit avoir au moins 8 chiffres.
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="name">NOMBRE DE TELEPHONE</div>
+          <div class="value">
+            <div class="input-group">
+              <input
+                class="input--style-5"
+                type="number"
+                name="telephone"
+                #telephone="ngModel"
+                ngModel
+                required
+                pattern="[0-9]+"
+                minlength="8"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="alert alert-danger py-2 my-3"
+          *ngIf="
+            passport_cin.invalid && (passport_cin.dirty || passport_cin.touched)
+          "
+        >
+          <div *ngIf="passport_cin.errors?.['required']">
+            Le téléphone est obligatoire.
+          </div>
+          <div *ngIf="passport_cin.errors?.['minlength']">
+            Le cin doit avoir au moins 8 chiffres.
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="name">PASSEPORT/CIN</div>
+          <div class="value">
+            <div class="input-group">
+              <input
+                class="input--style-5"
+                type="number"
+                name="passport_cin"
+                #passport_cin="ngModel"
+                ngModel
+                required
+                minlength="8"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="alert alert-danger py-2 my-3"
+          *ngIf="sexe.errors?.['required'] && sexe.touched"
+        >
+          le genre est obligatoire
+        </div>
+        <div class="form-row">
+          <div class="name">GENRE</div>
+          <div class="value">
+            <div class="input-group">
+              <select
+                id="sexe"
+                class="form-control form-control-lg input--style-5"
+                name="sexe"
+                #sexe="ngModel"
+                ngModel
+                required
+              >
+                <option value="">Sélectionnez genre</option>
+                <option value="Garçon">Garçon</option>
+                <option value="Fille">Fille</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="name">ÉTABLISSEMENT</div>
+          <div class="value">
+            <div class="input-group">
+              <select
+                id="sexe"
+                class="form-control form-control-lg input--style-5"
+                name="etablissement"
+                #etablissement="ngModel"
+                ngModel
+                required
+              >
+                <option value="">Sélectionnez l'établissement</option>
+                <option
+                  *ngFor="let item of dataArray"
+                  value="{{ item.nom_etab }}"
+                >
+                  {{ item.nom_etab }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="alert alert-success py-3 my-3" *ngIf="messageaddSucc">
+          {{ messageaddSucc }}
+        </div>
+        <div class="alert alert-danger py-2 my-3" *ngIf="messageerr">
+          {{ messageerr }}
+        </div>
+        <div>
+          <button class="btn btn--radius-2 btn--red" type="submit">
+            Ajouter
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

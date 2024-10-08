@@ -1,0 +1,322 @@
+<div class="wrapper wrapper--w1050">
+  <div class="card card-5">
+    <div class="card-heading">
+      <h2 class="title">Ajouter un établissement</h2>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="addeatab(e)" #e="ngForm">
+        <div
+          class="alert alert-danger py-2 my-3"
+          *ngIf="nom_etab.invalid && (nom_etab.dirty || nom_etab.touched)"
+        >
+          <div *ngIf="nom_etab.errors?.['required']">
+            le nom est obligatoire
+          </div>
+          <div *ngIf="nom_etab.errors?.['pattern']">
+            Le nom doit être une chaîne de caractères.
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="name">NOM</div>
+          <div class="value">
+            <div class="input-group">
+              <input
+                class="input--style-5"
+                type="text"
+                name="nom_etab"
+                #nom_etab="ngModel"
+                ngModel
+                pattern="[a-zA-Z\s]+"
+                required
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="alert alert-danger py-2 my-3"
+          *ngIf="gouvernorat.errors?.['required'] && gouvernorat.touched"
+        >
+          le gouvernorat est obligatoire
+        </div>
+        <div class="form-row">
+          <div class="name">GOUVERNORAT</div>
+          <div class="value">
+            <div class="input-group">
+              <select
+                id="sexe"
+                class="form-control form-control-lg input--style-5"
+                name="gouvernorat"
+                #gouvernorat="ngModel"
+                ngModel
+                required
+              >
+                <option value="">Sélectionnez gouvernorat</option>
+                <option value="Tunis">Tunis</option>
+                <option value="Ariana">Ariana</option>
+                <option value="Ben Arous">Ben Arous</option>
+                <option value="Manouba">Manouba</option>
+                <option value="Nabeul">Nabeul</option>
+                <option value="Zaghouan">Zaghouan</option>
+                <option value="Bizerte">Bizerte</option>
+                <option value="Béja">Béja</option>
+                <option value="Jendouba">Jendouba</option>
+                <option value="Kef">Kef</option>
+                <option value="Siliana">Siliana</option>
+                <option value="Sousse">Sousse</option>
+                <option value="Monastir">Monastir</option>
+                <option value="Mahdia">Mahdia</option>
+                <option value="Sfax">Sfax</option>
+                <option value="Kairouan">Kairouan</option>
+                <option value="Kasserine">Kasserine</option>
+                <option value="Sidi Bouzid">Sidi Bouzid</option>
+                <option value="Gabes">Gabes</option>
+                <option value="Medenine">Medenine</option>
+                <option value="Tataouine">Tataouine</option>
+                <option value="Tozeur">Tozeur</option>
+                <option value="Kebili">Kebili</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="alert alert-success py-3 my-3" *ngIf="messageaddSucc">
+          {{ messageaddSucc }}
+        </div>
+        <div class="alert alert-danger py-3 my-3" *ngIf="messageerr">
+          {{ messageerr }}
+        </div>
+        <div>
+          <button
+            class="btn btn--radius-2 btn--red"
+            type="submit"
+            name="Ajouter"
+          >
+            Ajouter
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<section class="p-2 ms-5">
+  <div class="container mt-3 bg-body pb-5">
+    <div class="justify-content-center">
+      <div class="col-xl-12">
+        <div class="table100 ver1 m-b-110">
+          <div class="table100-head">
+            <table>
+              <thead>
+                <tr class="row100 head">
+                  <th class="cell100 column2 bg-dark"></th>
+                  <th class="cell100 column5 bg-dark">ID</th>
+                  <th class="cell100 column1 bg-dark">Établissement</th>
+                  <th class="cell100 column4 bg-dark">Gouvernorat</th>
+                  <th class="cell100 column5 bg-dark"></th>
+                  <th class="cell100 column5 bg-dark"></th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div class="table100-body js-pscroll">
+            <table>
+              <tbody>
+                <tr
+                  class="row100 body"
+                  *ngFor="let item of dataArray; index as i"
+                >
+                  <td class="cell100 column2">{{ i + 1 }}</td>
+                  <td class="cell100 column5">{{ item.etab_id }}</td>
+                  <td class="cell100 column1">{{ item.nom_etab }}</td>
+                  <td class="cell100 column4">{{ item.gouvernorat }}</td>
+                  <td class="cell100 column5 ali">
+                    <button
+                      type="button"
+                      class="button btn--radius-2 btn--green"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                      (click)="
+                        getdata(item.etab_id, item.nom_etab, item.gouvernorat)
+                      "
+                    >
+                      <i class="bi bi-pen"></i>
+                    </button>
+                  </td>
+                  <td class="cell100 column5 ali">
+                    <button
+                      type="button"
+                      class="button btn--radius-2 btn--red"
+                      data-bs-toggle="modal"
+                      data-bs-target="#deleteModal"
+                      (click)="deletebtn(item.etab_id, i)"
+                    >
+                      <i class="bi bi-trash3-fill"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
+    style="margin-left: 20%"
+  >
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header py-3" style="padding: 30px 30px">
+        <h1
+          class="modal-title fs-3"
+          style="margin-left: 40%; color: #dd0025"
+          id="exampleModalLabel"
+        >
+          Modifier l'établissement
+        </h1>
+      </div>
+      <div class="modal-body pt-4">
+        <div class="mx-5">
+          <form (ngSubmit)="updateetab(u)" #u="ngForm">
+            <div class="form-row">
+              <div class="name text-light">NOM</div>
+              <div class="value">
+                <div class="input-group">
+                  <input
+                    class="input--style-5"
+                    type="text"
+                    name="nom_etab"
+                    #nom_etab="ngModel"
+                    ngModel
+                    [(ngModel)]="dataetab.nom_etab"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="name text-light">GOUVERNORAT</div>
+              <div class="value">
+                <div class="input-group">
+                  <select
+                    id="sexe"
+                    class="form-control form-control-lg input--style-5"
+                    name="gouvernorat"
+                    #gouvernorat="ngModel"
+                    ngModel
+                    [(ngModel)]="dataetab.gouvernorat"
+                    required
+                  >
+                    <option value="">Sélectionnez gouvernorat</option>
+                    <option value="Tunis">Tunis</option>
+                    <option value="Ariana">Ariana</option>
+                    <option value="Ben Arous">Ben Arous</option>
+                    <option value="Manouba">Manouba</option>
+                    <option value="Nabeul">Nabeul</option>
+                    <option value="Zaghouan">Zaghouan</option>
+                    <option value="Bizerte">Bizerte</option>
+                    <option value="Béja">Béja</option>
+                    <option value="Jendouba">Jendouba</option>
+                    <option value="Kef">Kef</option>
+                    <option value="Siliana">Siliana</option>
+                    <option value="Sousse">Sousse</option>
+                    <option value="Monastir">Monastir</option>
+                    <option value="Mahdia">Mahdia</option>
+                    <option value="Sfax">Sfax</option>
+                    <option value="Kairouan">Kairouan</option>
+                    <option value="Kasserine">Kasserine</option>
+                    <option value="Sidi Bouzid">Sidi Bouzid</option>
+                    <option value="Gabes">Gabes</option>
+                    <option value="Medenine">Medenine</option>
+                    <option value="Tataouine">Tataouine</option>
+                    <option value="Tozeur">Tozeur</option>
+                    <option value="Kebili">Kebili</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="alert alert-success py-3 my-3" *ngIf="messsageSucc">
+              {{ messsageSucc }}
+            </div>
+            <div class="pb-3">
+              <button type="submit" class="button btn--radius-2 btn--red">
+                Modifier
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer py-3">
+        <button
+          type="submit"
+          class="button btn--radius-2 btn--secondary me-2"
+          data-bs-dismiss="modal"
+        >
+          Fermer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Delete Modal -->
+
+<div
+  class="modal fade"
+  id="deleteModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+    style="margin-left: 30%"
+  >
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header py-3" style="padding: 30px 30px">
+        <h1
+          class="modal-title fs-4"
+          style="margin-left: 30%; color: #dd0025"
+          id="exampleModalLabel"
+        >
+          Supprimer établissement
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="m-5">
+          <h4>Voulez-vous supprimer cet établissement ?</h4>
+        </div>
+      </div>
+      <div class="modal-footer py-3">
+        <button
+          type="button"
+          class="button btn--radius-2 btn--red me-3"
+          data-bs-dismiss="modal"
+          (click)="deletedata(delebtn.etab_id, delebtn.i)"
+        >
+          oui
+        </button>
+        <button
+          type="button"
+          class="button btn--radius-2 btn--secondary me-3"
+          data-bs-dismiss="modal"
+        >
+          non
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,666 @@
+<div
+  class="page-wrapper p-t-100 p-b-50 mt-3 row"
+  style="background-color: #f2f2f2"
+>
+  <h2 class="mb-5 text-center fs-1 fw-semibold">
+    <span class="text-danger">Mastére:</span> {{ dataArray[0].nom_m }}
+  </h2>
+
+  <div class="wrapper wrapper--w900 col-sm-4">
+    <div class="card card-6" style="border: none">
+      <div class="card-heading">
+        <h2 class="title text-danger">Informations personnelles</h2>
+      </div>
+      <div class="card-body shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="form-row">
+          <div class="name">PASSEPORT/CIN :</div>
+          <div class="value mt-2">{{ infoArray.passport_cin }}</div>
+        </div>
+        <div class="form-row">
+          <div class="name">NOM :</div>
+          <div class="value mt-2">{{ infoArray.nom }}</div>
+        </div>
+        <div class="form-row">
+          <div class="name">PRÉNOM :</div>
+          <div class="value mt-2">{{ infoArray.prenom }}</div>
+        </div>
+        <div class="form-row">
+          <div class="name">EMAIL :</div>
+          <div class="value mt-2">{{ infoArray.email }}</div>
+        </div>
+        <div class="form-row">
+          <div class="name">NUMÉRO DE TÉLÉPHONE :</div>
+          <div class="value mt-2 ps-2">{{ infoArray.telephone }}</div>
+        </div>
+
+        <div class="form-row">
+          <div class="name">DATE DE NAISSANCE :</div>
+          <div class="value mt-2">
+            {{ infoArray.naissance | date : "yyyy-MM-dd" }}
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="name">VILLE DE NAISSANCE :</div>
+          <div class="value mt-2">{{ infoArray.ville_naissance }}</div>
+        </div>
+        <div class="form-row">
+          <div class="name">GOUVERNORAT :</div>
+          <div class="value mt-2">{{ infoArray.gouvernorat }}</div>
+        </div>
+        <div class="form-row">
+          <div class="name">PAYS :</div>
+          <div class="value mt-2">{{ infoArray.pays }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrapper wrapper--w900 col-sm-8">
+    <div class="card card-6" style="border: none">
+      <div class="card-heading">
+        <h2 class="title text-danger">Dossier de étudiant</h2>
+      </div>
+      <div class="card-body shadow-lg p-3 mb-5 bg-white rounded">
+        <form (ngSubmit)="addcondfile(d)" #d="ngForm">
+          <h2 class="ms-5 mb-3" style="color: #0dc3e7">PARCOURS</h2>
+          <div class="form-row">
+            <div class="name">ANNÉE DU BAC</div>
+            <div class="value">
+              <input
+                class="input--style-6"
+                type="number"
+                name="ann_bac"
+                #ann_bac="ngModel"
+                ngModel
+                placeholder="ANNÉE D'OBTENTION DU BAC"
+                pattern="[0-9]+"
+                minlength="4"
+                max="4"
+                required
+              />
+              <div
+                class="alert alert-danger py-2 my-3"
+                *ngIf="ann_bac.invalid && (ann_bac.dirty || ann_bac.touched)"
+              >
+                <div *ngIf="ann_bac.errors?.['required']">
+                  La année d'obtention du bac est obligatoire.
+                </div>
+                <div *ngIf="ann_bac.errors?.['pattern']">
+                  La année d'obtention du bac ne doit contenir que des chiffres.
+                </div>
+                <div *ngIf="ann_bac.errors?.['minlength']">
+                  La année d'obtention du bac doit avoir au moins 4 chiffres.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="name">SPÉCIALITÉ BAC</div>
+            <div class="value">
+              <div class="input-group">
+                <input
+                  class="input--style-6"
+                  type="text"
+                  name="spec_bac"
+                  #spec_bac="ngModel"
+                  ngModel
+                  placeholder="SPÉCIALITÉ BAC"
+                  required
+                  pattern="[a-zA-Z\s]+"
+                />
+              </div>
+              <div
+                class="alert alert-danger py-2 my-3"
+                *ngIf="spec_bac.invalid && (spec_bac.dirty || spec_bac.touched)"
+              >
+                <div *ngIf="spec_bac.errors?.['required']">
+                  Le spécialité est obligatoire.
+                </div>
+                <div *ngIf="spec_bac.errors?.['pattern']">
+                  Le spécialité doit être une chaîne de caractères.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="name">DIPLÔME UNIVERSITAIRE</div>
+            <div class="value">
+              <div class="input-group">
+                <input
+                  class="input--style-6"
+                  type="text"
+                  name="dip_univ"
+                  #dip_univ="ngModel"
+                  ngModel
+                  placeholder="DIPLÔME UNIVERSITAIRE"
+                  required
+                  pattern="[a-zA-Z\s]+"
+                />
+              </div>
+              <div
+                class="alert alert-danger py-2 my-3"
+                *ngIf="dip_univ.invalid && (dip_univ.dirty || dip_univ.touched)"
+              >
+                <div *ngIf="dip_univ.errors?.['required']">
+                  Le diplôme universitaire est obligatoire.
+                </div>
+                <div *ngIf="dip_univ.errors?.['pattern']">
+                  Le diplôme universitaire doit être une chaîne de caractères.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="name">SPÉCIALITÉ</div>
+            <div class="value">
+              <div class="input-group">
+                <input
+                  class="input--style-6"
+                  type="text"
+                  name="spec"
+                  #spec="ngModel"
+                  ngModel
+                  placeholder="SPÉCIALITÉ"
+                  required
+                  pattern="[a-zA-Z\s]+"
+                />
+              </div>
+              <div
+                class="alert alert-danger py-2 my-3"
+                *ngIf="spec.invalid && (spec.dirty || spec.touched)"
+              >
+                <div *ngIf="spec.errors?.['required']">
+                  Le spécialité est obligatoire.
+                </div>
+                <div *ngIf="spec.errors?.['pattern']">
+                  Le spécialité doit être une chaîne de caractères.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="name">ANNÉE D'OBTENTION</div>
+            <div class="value">
+              <input
+                class="input--style-6"
+                type="number"
+                name="ann_dip"
+                #ann_dip="ngModel"
+                ngModel
+                placeholder="ANNÉE D'OBTENTION"
+                min="4"
+                pattern="[0-9]+"
+                minlength="4"
+                max="4"
+                required
+              />
+              <div
+                class="alert alert-danger py-2 my-3"
+                *ngIf="ann_dip.invalid && (ann_dip.dirty || ann_dip.touched)"
+              >
+                <div *ngIf="ann_dip.errors?.['required']">
+                  La année d'obtention est obligatoire.
+                </div>
+                <div *ngIf="ann_dip.errors?.['pattern']">
+                  La année d'obtention ne doit contenir que des chiffres.
+                </div>
+                <div *ngIf="ann_dip.errors?.['minlength']">
+                  La année d'obtention doit avoir au moins 4 chiffres.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h2 class="ms-5 mb-2 mt-3" style="color: #0dc3e7">VOTRE MOYENNES</h2>
+
+          <div class="form-r">
+            <div class="checkname">REDOUBLEMENT</div>
+            <div class="">
+              <div class="checkbox-container">
+                <input
+                  type="radio"
+                  id="un-ans"
+                  name="redoublement1"
+                  value="un ans"
+                  [(ngModel)]="redoublement1"
+                />
+                <label for="un-ans">Un ans</label>
+                <input
+                  type="radio"
+                  id="deux-ans"
+                  name="redoublement1"
+                  value="deux ans"
+                  [(ngModel)]="redoublement1"
+                />
+                <label for="deux-ans">Deux ans</label>
+                <input
+                  type="radio"
+                  id="non"
+                  name="redoublement1"
+                  value="non"
+                  [(ngModel)]="redoublement1"
+                />
+                <label for="non">Non</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="name">MOYENNE DE 1ERE ANNÉE</div>
+            <div class="value">
+              <div class="input-group">
+                <input
+                  class="input--style-6"
+                  type="number"
+                  name="moy_1ere"
+                  placeholder="MOYENNE DE 1ERE ANNÉE"
+                  #moy_1ere="ngModel"
+                  ngModel
+                  min="1"
+                  pattern="[0-9]+"
+                  required
+                />
+              </div>
+              <div
+                class="alert alert-danger py-2 my-3"
+                *ngIf="moy_1ere.invalid && (moy_1ere.dirty || moy_1ere.touched)"
+              >
+                <div *ngIf="moy_1ere.errors?.['required']">
+                  La moyenne est obligatoire.
+                </div>
+                <div *ngIf="moy_1ere.errors?.['pattern']">
+                  La moyenne ne doit contenir que des chiffres.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="name">SESSION</div>
+            <div class="value">
+              <div class="input-group">
+                <select
+                  class="select"
+                  name="session_1ere"
+                  #session_1ere="ngModel"
+                  ngModel
+                  required
+                >
+                  <option value="" style="color: #7c7b7b">
+                    SÉLECTIONNEZ LA SESSION DE 1ÈRE ANNÉE
+                  </option>
+                  <option value="principal">Principal</option>
+                  <option value="controle">Contrôle</option>
+                </select>
+              </div>
+              <div
+                class="alert alert-danger py-2 my-3"
+                *ngIf="
+                  session_1ere.invalid &&
+                  (session_1ere.dirty || session_1ere.touched)
+                "
+              >
+                <div *ngIf="session_1ere.errors?.['required']">
+                  La session est obligatoire.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="name">CRÉDIT DE 1ERE ANNÉE</div>
+            <div class="value">
+              <div class="input-group">
+                <input
+                  class="input--style-6"
+                  type="number"
+                  name="credit_1ere"
+                  #credit_1ere="ngModel"
+                  ngModel
+                  placeholder="CRÉDIT DE 1ERE ANNÉE"
+                  min="1"
+                  pattern="[0-9]+"
+                  required
+                />
+              </div>
+              <div
+                class="alert alert-danger py-2 my-3"
+                *ngIf="
+                  credit_1ere.invalid &&
+                  (credit_1ere.dirty || credit_1ere.touched)
+                "
+              >
+                <div *ngIf="credit_1ere.errors?.['required']">
+                  Le crédit est obligatoire.
+                </div>
+                <div *ngIf="credit_1ere.errors?.['pattern']">
+                  Le crédit ne doit contenir que des chiffres.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="name">RELEVE DE NOTE 1ERE ANNÉE</div>
+            <div class="value">
+              <div class="input-group mb-3">
+                <input
+                  type="file"
+                  class="form-control"
+                  id="inputGroupFile02"
+                  name="file_1ere"
+                  #file_1ere="ngModel"
+                  ngModel
+                  (change)="onFileSelected($event, 'file1')"
+                  required
+                />
+              </div>
+              <div class="label--desc">
+                Téléchargez votre fichier pertinent. Taille maximale du fichier
+                50 Mo
+              </div>
+            </div>
+          </div>
+          <div class="form-r">
+            <div class="checkname">REDOUBLEMENT</div>
+            <div class="">
+              <div class="checkbox-container">
+                <input
+                  type="radio"
+                  id="un-ans2"
+                  name="redoublement2"
+                  value="un ans"
+                  [(ngModel)]="redoublement2"
+                />
+                <label for="un-ans2">Un ans</label>
+                <input
+                  type="radio"
+                  id="deux-ans2"
+                  name="redoublement2"
+                  value="deux ans"
+                  [(ngModel)]="redoublement2"
+                />
+                <label for="deux-ans2">Deux ans</label>
+                <input
+                  type="radio"
+                  id="non2"
+                  name="redoublement2"
+                  value="non"
+                  [(ngModel)]="redoublement2"
+                />
+                <label for="non2">Non</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="name">MOYENNE DE 2EME ANNÉE</div>
+            <div class="value">
+              <div class="input-group">
+                <input
+                  class="input--style-6"
+                  placeholder="MOYENNE DE 2EME ANNÉE"
+                  type="number"
+                  name="moy_2eme"
+                  #moy_2eme="ngModel"
+                  ngModel
+                  min="1"
+                  pattern="[0-9]+"
+                  required
+                />
+              </div>
+              <div
+                class="alert alert-danger py-2 my-3"
+                *ngIf="moy_2eme.invalid && (moy_2eme.dirty || moy_2eme.touched)"
+              >
+                <div *ngIf="moy_2eme.errors?.['required']">
+                  La moyenne est obligatoire.
+                </div>
+                <div *ngIf="moy_2eme.errors?.['pattern']">
+                  La moyenne ne doit contenir que des chiffres.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="name">SESSION</div>
+            <div class="value">
+              <div class="input-group">
+                <select
+                  class="select"
+                  name="session_2eme"
+                  #session_2eme="ngModel"
+                  ngModel
+                  required
+                >
+                  <option value="" style="color: #7c7b7b">
+                    SÉLECTIONNEZ LA SESSION DE 2EME ANNÉE
+                  </option>
+                  <option value="principal">Principal</option>
+                  <option value="controle">Contrôle</option>
+                </select>
+              </div>
+              <div
+                class="alert alert-danger py-2 my-3"
+                *ngIf="
+                  session_2eme.invalid &&
+                  (session_2eme.dirty || session_2eme.touched)
+                "
+              >
+                <div *ngIf="session_2eme.errors?.['required']">
+                  La session est obligatoire.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="name">CRÉDIT DE 2EME ANNÉE</div>
+            <div class="value">
+              <div class="input-group">
+                <input
+                  class="input--style-6"
+                  type="number"
+                  name="credit_2eme"
+                  #credit_2eme="ngModel"
+                  ngModel
+                  placeholder="CRÉDIT DE 2EME ANNÉE"
+                  min="1"
+                  pattern="[0-9]+"
+                  required
+                />
+              </div>
+              <div
+                class="alert alert-danger py-2 my-3"
+                *ngIf="
+                  credit_2eme.invalid &&
+                  (credit_2eme.dirty || credit_2eme.touched)
+                "
+              >
+                <div *ngIf="credit_2eme.errors?.['required']">
+                  Le crédit est obligatoire.
+                </div>
+                <div *ngIf="credit_2eme.errors?.['pattern']">
+                  Le crédit ne doit contenir que des chiffres.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="name">RELEVE DE NOTE 2EME ANNÉE</div>
+            <div class="value">
+              <div class="input-group mb-3">
+                <input
+                  type="file"
+                  class="form-control"
+                  id="inputGroupFile02"
+                  name="file_2eme"
+                  #file_2eme="ngModel"
+                  ngModel
+                  (change)="onFileSelected($event, 'file2')"
+                  required
+                />
+              </div>
+              <div class="label--desc">
+                Téléchargez votre fichier pertinent. Taille maximale du fichier
+                50 Mo
+              </div>
+            </div>
+          </div>
+          <div class="form-r">
+            <div class="checkname">REDOUBLEMENT</div>
+            <div class="">
+              <div class="checkbox-container">
+                <input
+                  type="radio"
+                  id="un-ans3"
+                  name="redoublement3"
+                  value="un-ans"
+                  [(ngModel)]="redoublement3"
+                />
+                <label for="un ans3">Un ans</label>
+                <input
+                  type="radio"
+                  id="deux-ans3"
+                  name="redoublement3"
+                  value="deux ans"
+                  [(ngModel)]="redoublement3"
+                />
+                <label for="deux-ans3">Deux ans</label>
+                <input
+                  type="radio"
+                  id="non3"
+                  name="redoublement3"
+                  value="non"
+                  [(ngModel)]="redoublement3"
+                />
+                <label for="non3">Non</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="name">MOYENNE DE 3EME ANNÉE</div>
+            <div class="value">
+              <div class="input-group">
+                <input
+                  class="input--style-6"
+                  type="number"
+                  name="moy_3eme"
+                  #moy_3eme="ngModel"
+                  ngModel
+                  placeholder="MOYENNE DE 3EME ANNÉE"
+                  min="1"
+                  pattern="[0-9]+"
+                  required
+                />
+              </div>
+              <div
+                class="alert alert-danger py-2 my-3"
+                *ngIf="moy_3eme.invalid && (moy_3eme.dirty || moy_3eme.touched)"
+              >
+                <div *ngIf="moy_3eme.errors?.['required']">
+                  La moyenne est obligatoire.
+                </div>
+                <div *ngIf="moy_3eme.errors?.['pattern']">
+                  La moyenne ne doit contenir que des chiffres.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="name">SESSION</div>
+            <div class="value">
+              <div class="input-group">
+                <select
+                  class="select"
+                  name="session_3eme"
+                  #session_3eme="ngModel"
+                  ngModel
+                  required
+                >
+                  <option value="">
+                    SÉLECTIONNEZ LA SESSION DE 3EME ANNÉE
+                  </option>
+                  <option value="principal">Principal</option>
+                  <option value="controle">Contrôle</option>
+                </select>
+              </div>
+              <div
+                class="alert alert-danger py-2 my-3"
+                *ngIf="
+                  session_3eme.invalid &&
+                  (session_3eme.dirty || session_3eme.touched)
+                "
+              >
+                <div *ngIf="session_3eme.errors?.['required']">
+                  La session est obligatoire.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="name">CRÉDIT DE 3EME ANNÉE</div>
+            <div class="value">
+              <div class="input-group">
+                <input
+                  class="input--style-6"
+                  type="number"
+                  name="credit_3eme"
+                  #credit_3eme="ngModel"
+                  ngModel
+                  min="1"
+                  pattern="[0-9]+"
+                  placeholder="CRÉDIT DE 3EME ANNÉE"
+                  required
+                />
+              </div>
+              <div
+                class="alert alert-danger py-2 my-3"
+                *ngIf="
+                  credit_3eme.invalid &&
+                  (credit_3eme.dirty || credit_3eme.touched)
+                "
+              >
+                <div *ngIf="credit_3eme.errors?.['required']">
+                  Le crédit est obligatoire.
+                </div>
+                <div *ngIf="credit_3eme.errors?.['pattern']">
+                  Le crédit ne doit contenir que des chiffres.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="name">RELEVE DE NOTE 3EME ANNÉE</div>
+            <div class="value">
+              <div class="input-group mb-3">
+                <input
+                  type="file"
+                  class="form-control"
+                  id="inputGroupFile02"
+                  name="file_3eme"
+                  #file_3eme="ngModel"
+                  ngModel
+                  (change)="onFileSelected($event, 'file3')"
+                  required
+                />
+              </div>
+              <div class="label--desc">
+                Téléchargez votre fichier pertinent. Taille maximale du fichier
+                50 Mo
+              </div>
+            </div>
+          </div>
+
+          <div class="alert alert-success py-3 my-3" *ngIf="messageSucc">
+            {{ messageSucc }}
+          </div>
+          <div class="card-footer">
+            <button class="btn btn--radius-2 btn--blue-2" type="submit">
+              Envoyer la candidature
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

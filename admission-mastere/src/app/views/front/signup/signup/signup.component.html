@@ -1,0 +1,375 @@
+<section class="h-100 gradient-custom-2" id="section-signup">
+  <div class="page-content" style="background-color: #e8e8e8">
+    <div class="form-v5-content bg-dark text-light">
+      <form class="form-detail" (ngSubmit)="signupuser(f)" #f="ngForm">
+        <h2 style="color: #cb1332">S'INSCRIRE</h2>
+        <div class="ms-5">
+          <div class="form">
+            <label for="full-name">NOM</label>
+            <input
+              type="text"
+              name="nom"
+              id="nom"
+              class="input-text"
+              placeholder="NOM"
+              #nom="ngModel"
+              ngModel
+              pattern="[a-zA-Z\s]+"
+              required
+            />
+            <div
+              class="alert alert-danger py-2 my-3"
+              style="margin-right: 5.5%"
+              *ngIf="nom.invalid && (nom.dirty || nom.touched)"
+            >
+              <div *ngIf="nom.errors?.['required']">
+                Le nom est obligatoire.
+              </div>
+              <div *ngIf="nom.errors?.['pattern']">
+                Le nom doit être une chaîne de caractères.
+              </div>
+            </div>
+          </div>
+          <div class="form">
+            <label for="full-name">PRÉNOM</label>
+            <input
+              type="text"
+              name="prenom"
+              id="prenom"
+              class="input-text"
+              placeholder="PRÉNOM"
+              #prenom="ngModel"
+              ngModel
+              pattern="[a-zA-Z\s]+"
+              required
+            />
+            <div
+              class="alert alert-danger py-2 my-3"
+              style="margin-right: 5.5%"
+              *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)"
+            >
+              <div *ngIf="prenom.errors?.['required']">
+                Le prénom est obligatoire.
+              </div>
+              <div *ngIf="prenom.errors?.['pattern']">
+                Le prénom doit être une chaîne de caractères.
+              </div>
+            </div>
+          </div>
+          <div class="form">
+            <label for="your-email">EMAIL</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              class="input-text"
+              placeholder="EMAIL"
+              #email="ngModel"
+              ngModel
+              required
+              pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}"
+            />
+            <div
+              class="alert alert-danger py-2 my-3"
+              style="margin-right: 5.5%"
+              *ngIf="email.invalid && (email.dirty || email.touched)"
+            >
+              <div *ngIf="email.errors?.['required']">
+                Le email est obligatoire.
+              </div>
+              <div *ngIf="email.errors?.['email']">
+                L'adresse email doit être au format correct.
+              </div>
+              <div *ngIf="email.errors?.['pattern']">
+                L'adresse email doit être au format correct.
+              </div>
+            </div>
+          </div>
+
+          <div class="form">
+            <label for="password">MOT DE PASSE</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              class="input-text"
+              placeholder="MOT DE PASSE"
+              #password="ngModel"
+              ngModel
+              required
+              minlength="8"
+            />
+            <div
+              class="alert alert-danger py-2 my-3"
+              style="margin-right: 5.5%"
+              *ngIf="password.invalid && (password.dirty || password.touched)"
+            >
+              <div *ngIf="password.errors?.['required']">
+                le mot de passe est obligatoire
+              </div>
+              <div *ngIf="password.errors?.['minlength']">
+                Le mot de passe doit avoir au moins 6 caractères.
+              </div>
+            </div>
+          </div>
+          <div class="form">
+            <label for="your-email">NUMÉRO DE TÉLÉPHONE</label>
+            <input
+              type="number"
+              name="telephone"
+              id="telephone"
+              class="input-text"
+              placeholder="TELEPHONE"
+              #telephone="ngModel"
+              ngModel
+              required
+              pattern="[0-9]+"
+              minlength="8"
+            />
+            <div
+              class="alert alert-danger py-2 my-3"
+              style="margin-right: 5.5%"
+              *ngIf="
+                telephone.invalid && (telephone.dirty || telephone.touched)
+              "
+            >
+              <div *ngIf="telephone.errors?.['required']">
+                Le téléphone est obligatoire.
+              </div>
+              <div *ngIf="telephone.errors?.['pattern']">
+                Le téléphone ne doit contenir que des chiffres.
+              </div>
+              <div *ngIf="telephone.errors?.['minlength']">
+                Le téléphone doit avoir au moins 8 chiffres.
+              </div>
+            </div>
+          </div>
+
+          <div class="form">
+            <label for="your-email">PASSEPORT/CIN</label>
+            <input
+              type="number"
+              name="passport_cin"
+              id="passport_cin"
+              class="input-text"
+              placeholder="PASSEPORT/CIN"
+              #passport_cin="ngModel"
+              ngModel
+              minlength="8"
+              required
+            />
+            <div
+              class="alert alert-danger py-2 my-3"
+              style="margin-right: 5.5%"
+              *ngIf="
+                passport_cin.invalid &&
+                (passport_cin.dirty || passport_cin.touched)
+              "
+            >
+              <div *ngIf="passport_cin.errors?.['required']">
+                Le téléphone est obligatoire.
+              </div>
+              <div *ngIf="passport_cin.errors?.['minlength']">
+                Le cin doit avoir au moins 8 chiffres.
+              </div>
+            </div>
+          </div>
+          <div class="form">
+            <label for="your-email">GENRE</label>
+            <select
+              id="sexe"
+              class="form-control form-control-lg"
+              name="sexe"
+              #sexe="ngModel"
+              ngModel
+              required
+              style="color: #999"
+            >
+              <option value="">Sélectionnez votre genre</option>
+              <option value="Garçon">Garçon</option>
+              <option value="Fille">Fille</option>
+            </select>
+            <div
+              class="alert alert-danger py-2 my-3"
+              style="margin-right: 5.5%"
+              *ngIf="sexe.errors?.['required'] && sexe.touched"
+            >
+              le genre est obligatoire
+            </div>
+          </div>
+          <div class="form">
+            <label for="your-email">DATE DE NAISSANCE</label>
+            <input
+              type="date"
+              name="naissance"
+              id="naissance"
+              class="input-text"
+              placeholder="DATE DE NAISSANCE"
+              #naissance="ngModel"
+              ngModel
+              required
+              style="color: #999"
+            />
+            <div
+              class="alert alert-danger py-2 my-3"
+              style="margin-right: 5.5%"
+              *ngIf="naissance.errors?.['required'] && naissance.touched"
+            >
+              le naissance est obligatoire
+            </div>
+          </div>
+          <div class="form">
+            <label for="your-email">VILLE DE NAISSANCE</label>
+            <input
+              type="text"
+              name="ville_naissance"
+              id="ville_naissance"
+              class="input-text"
+              placeholder="VILLE DE NAISSANCE"
+              #ville_naissance="ngModel"
+              ngModel
+              pattern="[a-zA-Z\s]+"
+              required
+            />
+            <div
+              class="alert alert-danger py-2 my-3"
+              style="margin-right: 5.5%"
+              *ngIf="
+                ville_naissance.invalid &&
+                (ville_naissance.dirty || ville_naissance.touched)
+              "
+            >
+              <div *ngIf="ville_naissance.errors?.['required']">
+                Le ville de naissance est obligatoire.
+              </div>
+              <div *ngIf="ville_naissance.errors?.['pattern']">
+                Le ville de naissance doit être une chaîne de caractères.
+              </div>
+            </div>
+          </div>
+          <div class="form">
+            <label for="your-email">GOUVERNORAT</label>
+            <input
+              type="text"
+              name="gouvernorat"
+              id="gouvernorat"
+              class="input-text"
+              placeholder="GOUVERNORAT"
+              #gouvernorat="ngModel"
+              ngModel
+              pattern="[a-zA-Z\s]+"
+              required
+            />
+            <div
+              class="alert alert-danger py-2 my-3"
+              style="margin-right: 5.5%"
+              *ngIf="
+                gouvernorat.invalid &&
+                (gouvernorat.dirty || gouvernorat.touched)
+              "
+            >
+              <div *ngIf="gouvernorat.errors?.['required']">
+                Le gouvernorat est obligatoire.
+              </div>
+              <div *ngIf="gouvernorat.errors?.['pattern']">
+                Le gouvernorat doit être une chaîne de caractères.
+              </div>
+            </div>
+          </div>
+          <div class="form">
+            <label for="your-email">PAYS</label>
+            <select
+              id="pays"
+              class="form-control form-control-lg"
+              name="pays"
+              #pays="ngModel"
+              ngModel
+              required
+              style="color: #999"
+            >
+              <option value="">Sélectionnez votre pays</option>
+              <option value="Algeria">Algeria</option>
+              <option value="Angola">Angola</option>
+              <option value="Benin">Benin</option>
+              <option value="Botswana">Botswana</option>
+              <option value="Burkina Faso">Burkina Faso</option>
+              <option value="Burundi">Burundi</option>
+              <option value="Cameroon">Cameroon</option>
+              <option value="Cape Verde">Cape Verde</option>
+              <option value="Central African Republic">
+                Central African Republic
+              </option>
+              <option value="Chad">Chad</option>
+              <option value="Comoros">Comoros</option>
+              <option value="Democratic Republic of the Congo">
+                Democratic Republic of the Congo
+              </option>
+              <option value="Djibouti">Djibouti</option>
+              <option value="Egypt">Egypt</option>
+              <option value="Equatorial Guinea">Equatorial Guinea</option>
+              <option value="Eritrea">Eritrea</option>
+              <option value="Eswatini (Swaziland)">Eswatini (Swaziland)</option>
+              <option value="Ethiopia">Ethiopia</option>
+              <option value="Gabon">Gabon</option>
+              <option value="Gambia">Gambia</option>
+              <option value="Ghana">Ghana</option>
+              <option value="Guinea">Guinea</option>
+              <option value="Guinea-Bissau">Guinea-Bissau</option>
+              <option value="Ivory Coast">Ivory Coast</option>
+              <option value="Kenya">Kenya</option>
+              <option value="Lesotho">Lesotho</option>
+              <option value="Liberia">Liberia</option>
+              <option value="Libya">Libya</option>
+              <option value="Madagascar">Madagascar</option>
+              <option value="Malawi">Malawi</option>
+              <option value="Mali">Mali</option>
+              <option value="Mauritania">Mauritania</option>
+              <option value="Mauritius">Mauritius</option>
+              <option value="Morocco">Morocco</option>
+              <option value="Mozambique">Mozambique</option>
+              <option value="Namibia">Namibia</option>
+              <option value="Niger">Niger</option>
+              <option value="Nigeria">Nigeria</option>
+              <option value="Rwanda">Rwanda</option>
+              <option value="Sao Tome and Principe">
+                Sao Tome and Principe
+              </option>
+              <option value="Senegal">Senegal</option>
+              <option value="Seychelles">Seychelles</option>
+              <option value="Sierra Leone">Sierra Leone</option>
+              <option value="Somalia">Somalia</option>
+              <option value="South Africa">South Africa</option>
+              <option value="South Sudan">South Sudan</option>
+              <option value="Sudan">Sudan</option>
+              <option value="Tanzania">Tanzania</option>
+              <option value="Togo">Togo</option>
+              <option value="Tunisia">Tunisia</option>
+              <option value="Uganda">Uganda</option>
+              <option value="Zambia">Zambia</option>
+              <option value="Zimbabwe">Zimbabwe</option>
+            </select>
+            <div
+              class="alert alert-danger py-2 my-3"
+              style="margin-right: 5.5%"
+              *ngIf="pays.errors?.['required'] && pays.touched"
+            >
+              le pays est obligatoire
+            </div>
+          </div>
+          <div
+            class="alert alert-danger py-2 my-2"
+            style="margin-right: 5.5%"
+            *ngIf="messageerr"
+          >
+            {{ messageerr }}
+          </div>
+          <div class="form-row-last">
+            <button type="submit" name="register" class="register">
+              Register
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

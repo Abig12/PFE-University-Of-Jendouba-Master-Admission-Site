@@ -1,0 +1,56 @@
+section {
+    background: #e8e8e8;
+    padding-top:65px;
+    padding-bottom: 3px;
+}
+
+
+
+.lightblue{
+    color: #0dcaf0;
+}
+
+.bg-lb{
+    background-color: #0dcaf0;
+}
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}
+
+.h5title{
+    font-weight: 400;
+    font-size: 20px;
+}
+.h4title{
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.h5t{
+    font-weight: 400;
+    font-size: 28px;
+}
+.h4t{
+    font-weight: 300;
+    font-size: 24px;
+}
+.st{
+    font-weight: 300;
+    font-size: 18px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

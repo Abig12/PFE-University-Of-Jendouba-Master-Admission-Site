@@ -1,0 +1,55 @@
+<section class="p-2 m-5">
+  <div class="container bg-body pb-5">
+    <div class="justify-content-center">
+      <div class="pb-3">
+        <h1
+          id="h1-1"
+          style="text-align: center; color: #be0404; font-size: 45px"
+        >
+          LISTE DES ADMISSIONS
+        </h1>
+      </div>
+      <div class="col-xl-12">
+        <div class="table100 ver1 m-b-110">
+          <div class="table100-head">
+            <table>
+              <thead>
+                <tr class="row100 head">
+                  <th class="cell100 column2 bg-dark"></th>
+                  <th class="cell100 column-th bg-dark">Nom</th>
+                  <th class="cell100 columnp-th bg-dark">Prenom</th>
+                  <th class="cell100 columne-th bg-dark">Email</th>
+                  <th class="cell100 columnt-th bg-dark">Telephone</th>
+                  <th class="cell100 columnc-th bg-dark">Cin</th>
+                  <th class="cell100 columns-th bg-dark">État Candidature</th>
+                  <th class="cell100 columnm-th bg-dark">Mastère</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div class="table100-body js-pscroll">
+            <table>
+              <tbody>
+                <tr
+                  class="row100 body"
+                  *ngFor="let item of dataArray; index as i"
+                >
+                  <td class="cell100 column1">{{ i + 1 }}</td>
+                  <td class="cell100 column">{{ item.nom }}</td>
+                  <td class="cell100 column5">{{ item.prenom }}</td>
+                  <td class="cell100 column5">{{ item.email }}</td>
+                  <td class="cell100 column5">{{ item.telephone }}</td>
+                  <td class="cell100 column5">{{ item.passport_cin }}</td>
+                  <td class="cell100 column5">
+                    <span style="color: #54b435">{{ item.statut }}</span>
+                  </td>
+                  <td class="cell100 column4">{{ item.nom_m }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,51 @@
+<section class="p-1">
+  <div class="container mt-3 bg-body pb-5">
+    <div class="justify-content-center">
+      <div class="justify-content-center py-2">
+        <h1 id="h1-1" style="text-align: center">
+          LISTE DES MASTERS ET CANDIDATS
+        </h1>
+      </div>
+      <div class="col-xl-12">
+        <div class="table100 ver1 m-b-110">
+          <div class="table100-head">
+            <table>
+              <thead>
+                <tr class="row100 head">
+                  <th class="cell100 column1th bg-dark">NB</th>
+                  <th class="cell100 column2th bg-dark">Mastère</th>
+                  <th class="cell100 column5 bg-dark">
+                    Liste des candidature au mastère
+                  </th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div class="table100-body js-pscroll">
+            <table>
+              <tbody>
+                <tr
+                  class="row100 body"
+                  *ngFor="let item of dataArray; index as i"
+                >
+                  <td class="cell100 column1">{{ i + 1 }}</td>
+                  <td class="cell100 column2">{{ item.nom_m }}</td>
+
+                  <td class="cell100 column5 ali">
+                    <button
+                      type="button"
+                      class="button btn--radius-2 btn--green"
+                      (click)="listcond(item.cm_id)"
+                    >
+                      Liste des candidature
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

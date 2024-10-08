@@ -1,0 +1,855 @@
+<section>
+  <div
+    class="container bg-dark text-white mt-5 mb-5"
+    style="border-radius: 10px"
+  >
+    <div class="row">
+      <div class="col-md-5 border-right">
+        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+          <img
+            class="rounded-circle mt-5"
+            width="150px"
+            src="https://cdn-icons-png.flaticon.com/512/6997/6997484.png"
+            *ngIf="infoArray.sexe == 'Garçon'"
+          />
+          <img
+            class="rounded-circle mt-5"
+            width="150px"
+            src="https://cdn-icons-png.flaticon.com/512/6997/6997660.png"
+            *ngIf="infoArray.sexe == 'Fille'"
+          /><span class="mt-3" style="font-size: 30px; font-weight: 600"
+            >{{ infoArray.nom }} {{ infoArray.prenom }}</span
+          >
+          <div class="row mt-4">
+            <div class="d-flex align-items-center">
+              <label class="labels me-4 lightblue" style="font-size: 18px"
+                >EMAIL :</label
+              >
+              <h5 class="st">{{ infoArray.email }}</h5>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="d-flex align-items-center">
+              <label class="labels me-4 lightblue" style="font-size: 18px"
+                >PASSEPORT/CIN :</label
+              >
+              <h5 class="st">{{ infoArray.passport_cin }}</h5>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="d-flex align-items-center">
+              <label class="labels me-4 lightblue" style="font-size: 18px"
+                >NUMÉRO DE TÉLÉPHONE :</label
+              >
+              <h5 class="st">{{ infoArray.telephone }}</h5>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="d-flex align-items-center">
+              <label class="labels me-4 lightblue" style="font-size: 18px"
+                >DATE DE NAISSANCE :</label
+              >
+              <h5 class="st">
+                {{ infoArray.naissance | date : "yyyy-MM-dd" }}
+              </h5>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="d-flex align-items-center">
+              <label class="labels me-4 lightblue" style="font-size: 18px"
+                >VILLE DE NAISSANCE :</label
+              >
+              <h5 class="st">{{ infoArray.ville_naissance }}</h5>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="d-flex align-items-center">
+              <label class="labels me-4 lightblue" style="font-size: 18px"
+                >GOUVERNORAT :</label
+              >
+              <h5 class="st">{{ infoArray.gouvernorat }}</h5>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="d-flex align-items-center">
+              <label class="labels me-4 lightblue" style="font-size: 18px"
+                >PAYS :</label
+              >
+              <h5 class="st">{{ infoArray.pays }}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7 border-right">
+        <div class="p-3 py-5">
+          <div class="d-flex justify-content-center align-items-center mb-3">
+            <h4 class="text-center" style="font-size: 40px; color: #b3253d">
+              MON DOSSIER
+            </h4>
+          </div>
+
+          <div class="row mt-5">
+            <div class="col-md-12">
+              <label class="labels lightblue" style="font-size: 19px"
+                >ANNÉE D'OBTENTION DU BAC :</label
+              >
+              <h4 class="h4t">{{ dataArray.ann_bac }}</h4>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label class="labels lightblue" style="font-size: 19px"
+                >SPÉCIALITÉ BAC :</label
+              >
+              <h4 class="h4t">{{ dataArray.spec_bac }}</h4>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label class="labels lightblue" style="font-size: 19px"
+                >DIPLÔME UNIVERSITAIRE :</label
+              >
+              <h4 class="h4t">{{ dataArray.dip_univ }}</h4>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label class="labels lightblue" style="font-size: 19px"
+                >SPÉCIALITÉ :</label
+              >
+              <h4 class="h4t">{{ dataArray.spec }}</h4>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label class="labels lightblue" style="font-size: 19px"
+                >ANNÉE D'OBTENTION :</label
+              >
+              <h4 class="h4t">{{ dataArray.ann_dip }}</h4>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label class="labels lightblue" style="font-size: 19px"
+                >Redoublement :</label
+              >
+              <h4 class="h4t">{{ dataArray.redo_1ere }}</h4>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <label class="labels lightblue" style="font-size: 19px"
+                >MOYENNE DE 1ERE ANNÉE :</label
+              >
+              <h4 class="h4t">{{ dataArray.moy_1ere }}</h4>
+            </div>
+            <div class="col-md-6">
+              <label class="labels lightblue" style="font-size: 19px"
+                >SESSION :</label
+              >
+              <h4 class="h4t">{{ dataArray.session_1ere }}</h4>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label class="labels lightblue" style="font-size: 19px"
+                >CRÉDIT DE 1ERE ANNÉE :</label
+              >
+              <h4 class="h4t">{{ dataArray.credit_1ere }}</h4>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label class="labels lightblue" style="font-size: 19px"
+                >RELEVE DE NOTE 1ERE ANNÉE :</label
+              >
+              <br />
+              <button
+                class="btn btn-success profile-button mt-3 py-2 px-4"
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal1"
+              >
+                VOIR LE FICHE
+              </button>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label class="labels lightblue" style="font-size: 19px"
+                >Redoublement :</label
+              >
+              <h4 class="h4t">{{ dataArray.redo_2eme }}</h4>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <label class="labels lightblue" style="font-size: 19px"
+                >MOYENNE DE 2EME ANNÉE :</label
+              >
+              <h4 class="h4t">{{ dataArray.moy_2eme }}</h4>
+            </div>
+            <div class="col-md-6">
+              <label class="labels lightblue" style="font-size: 19px"
+                >SESSION :</label
+              >
+              <h4 class="h4t">{{ dataArray.session_2eme }}</h4>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label class="labels lightblue" style="font-size: 19px"
+                >CRÉDIT DE 2EME ANNÉE :</label
+              >
+              <h4 class="h4t">{{ dataArray.credit_2eme }}</h4>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label class="labels lightblue" style="font-size: 19px"
+                >RELEVE DE NOTE 2EME ANNÉE :</label
+              >
+              <br />
+              <button
+                class="btn btn-success profile-button mt-3 py-2 px-4"
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal2"
+              >
+                VOIR LE FICHE
+              </button>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label class="labels lightblue" style="font-size: 19px"
+                >Redoublement :</label
+              >
+              <h4 class="h4t">{{ dataArray.redo_3eme }}</h4>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <label class="labels lightblue" style="font-size: 19px"
+                >MOYENNE DE 3EME ANNÉE :</label
+              >
+              <h4 class="h4t">{{ dataArray.moy_3eme }}</h4>
+            </div>
+            <div class="col-md-6">
+              <label class="labels lightblue" style="font-size: 19px"
+                >SESSION :</label
+              >
+              <h4 class="h4t">{{ dataArray.session_3eme }}</h4>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label class="labels lightblue" style="font-size: 19px"
+                >CRÉDIT DE 3EME ANNÉE :</label
+              >
+              <h4 class="h4t">{{ dataArray.credit_3eme }}</h4>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label class="labels lightblue" style="font-size: 19px"
+                >RELEVE DE NOTE 3EME ANNÉE :</label
+              ><br />
+              <button
+                class="btn btn-success profile-button mt-3 py-2 px-4"
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal3"
+              >
+                VOIR LE FICHE
+              </button>
+            </div>
+          </div>
+
+          <div class="mt-5 text-center">
+            <button
+              class="btn profile-button me-5 bg-lb py-2 px-4"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              Modifier
+            </button>
+            <button
+              class="btn btn-danger profile-button py-2 px-4"
+              type="button"
+              (click)="ex()"
+            >
+              Fermer
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Details file1 Modal -->
+<div
+  class="modal fade"
+  id="exampleModal1"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
+    style="margin-left: 12%"
+  >
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header py-3" style="padding: 30px 30px">
+        <h1
+          class="modal-title fs-4"
+          style="margin-left: 30%; color: #dd0025"
+          id="exampleModalLabel"
+        >
+          RELEVE DE NOTE 1ERE ANNÉE
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="m-2">
+          <img [src]="dataArray.file_1ere" style="width: 1070px" />
+        </div>
+      </div>
+      <div class="modal-footer py-3">
+        <button
+          class="btn btn-danger profile-button py-2 px-4"
+          type="button"
+          data-bs-dismiss="modal"
+        >
+          Fermer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Details file2 Modal -->
+<div
+  class="modal fade"
+  id="exampleModal2"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
+    style="margin-left: 12%"
+  >
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header py-3" style="padding: 30px 30px">
+        <h1
+          class="modal-title fs-4"
+          style="margin-left: 35%; color: #dd0025"
+          id="exampleModalLabel"
+        >
+          RELEVE DE NOTE 2EME ANNÉE
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="m-2">
+          <img style="width: 1070px" [src]="dataArray.file_2eme" />
+        </div>
+      </div>
+      <div class="modal-footer py-3">
+        <button
+          class="btn btn-danger profile-button py-2 px-4"
+          type="button"
+          data-bs-dismiss="modal"
+        >
+          Fermer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Details file3 Modal -->
+<div
+  class="modal fade"
+  id="exampleModal3"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
+    style="margin-left: 12%"
+  >
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header py-3" style="padding: 30px 30px">
+        <h1
+          class="modal-title fs-4"
+          style="margin-left: 35%; color: #dd0025"
+          id="exampleModalLabel"
+        >
+          RELEVE DE NOTE 3EME ANNÉE
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="m-2">
+          <img [src]="dataArray.file_3eme" style="width: 1070px" />
+        </div>
+      </div>
+      <div class="modal-footer py-3">
+        <button
+          class="btn btn-danger profile-button py-2 px-4"
+          type="button"
+          data-bs-dismiss="modal"
+        >
+          Fermer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--      modify module        -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
+    style="margin-left: 12%"
+  >
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header py-3" style="padding: 30px 30px">
+        <h1
+          class="modal-title text-danger fs-4"
+          style="margin-left: 37%"
+          id="exampleModalLabel"
+        >
+          MODIFIER MON DOSSIER
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="m-2">
+          <form (ngSubmit)="updatefile(a)" #a="ngForm">
+            <h5 class="h5t lightblue">PARCOURS</h5>
+            <div class="form-group mt-3">
+              <label>ANNÉE D'OBTENTION DU BAC</label>
+              <input
+                type="number"
+                class="form-control"
+                name="ann_bac"
+                #ann_bac="ngModel"
+                ngModel
+                min="0"
+                required
+                [(ngModel)]="dataArray.ann_bac"
+                placeholder="ANNÉE D'OBTENTION DU BAC"
+              />
+            </div>
+            <div class="form-group">
+              <label>SPÉCIALITÉ BAC</label>
+              <input
+                type="text"
+                class="form-control"
+                name="spec_bac"
+                #spec_bac="ngModel"
+                ngModel
+                required
+                placeholder="SPÉCIALITÉ BAC"
+                [(ngModel)]="dataArray.spec_bac"
+              />
+            </div>
+            <div class="form-group mt-3">
+              <label>DIPLÔME UNIVERSITAIRE</label>
+              <input
+                type="text"
+                class="form-control"
+                name="dip_univ"
+                #dip_univ="ngModel"
+                ngModel
+                placeholder="DIPLÔME UNIVERSITAIRE"
+                required
+                [(ngModel)]="dataArray.dip_univ"
+              />
+            </div>
+            <div class="form-group">
+              <label>SPÉCIALITÉ</label>
+              <input
+                type="tel"
+                class="form-control"
+                name="spec"
+                #spec="ngModel"
+                ngModel
+                placeholder="SPÉCIALITÉ"
+                required
+                [(ngModel)]="dataArray.spec"
+              />
+            </div>
+            <div class="form-group">
+              <label>ANNÉE D'OBTENTION</label>
+              <input
+                type="number"
+                class="form-control"
+                name="ann_dip"
+                #ann_dip="ngModel"
+                ngModel
+                placeholder="ANNÉE D'OBTENTION"
+                min="0"
+                required
+                [(ngModel)]="dataArray.ann_dip"
+              />
+            </div>
+            <h5 class="h5t lightblue">VOTRE MOYENNES</h5>
+
+            <div class="form-group mt-3">
+              <label>Redoublement</label>
+              <div class="form-check">
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  id="un-ans"
+                  name="redoublement1"
+                  value="un ans"
+                  [(ngModel)]="redoublement1"
+                />
+                <label class="form-check-label me-5" for="un-ans"
+                  >Un ans
+                </label>
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  id="deux-ans"
+                  name="redoublement1"
+                  value="deux ans"
+                  [(ngModel)]="redoublement1"
+                />
+                <label class="form-check-label me-5" for="deux-ans"
+                  >Deux ans
+                </label>
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  id="non"
+                  name="redoublement1"
+                  value="non"
+                  [(ngModel)]="redoublement1"
+                />
+                <label class="form-check-label" for="non">Non </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>MOYENNE DE 1ERE ANNÉE</label>
+              <input
+                type="number"
+                class="form-control"
+                name="moy_1ere"
+                placeholder="MOYENNE DE 1ERE ANNÉE"
+                #moy_1ere="ngModel"
+                ngModel
+                min="0"
+                required
+                [(ngModel)]="dataArray.moy_1ere"
+              />
+            </div>
+            <div class="form-group">
+              <label>SESSION</label>
+              <select
+                class="form-select"
+                name="session_1ere"
+                #session_1ere="ngModel"
+                ngModel
+                required
+                [(ngModel)]="dataArray.session_1ere"
+              >
+                <option selected>SÉLECTIONNEZ LA SESSION DE 1ÈRE ANNÉE</option>
+                <option value="principal">Principal</option>
+                <option value="controle">Contrôle</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>CRÉDIT DE 1ERE ANNÉE</label>
+              <input
+                type="number"
+                class="form-control"
+                name="credit_1ere"
+                #credit_1ere="ngModel"
+                ngModel
+                placeholder="CRÉDIT DE 1ERE ANNÉE"
+                min="0"
+                required
+                [(ngModel)]="dataArray.credit_1ere"
+              />
+            </div>
+            <div class="form-group">
+              <label for="formFile" class="form-label"
+                >RELEVE DE NOTE 1ERE ANNÉE</label
+              >
+              <input
+                class="form-control"
+                type="file"
+                id="formFile"
+                name="file_1ere"
+                #file_1ere="ngModel"
+                ngModel
+                (change)="onFileSelected($event, 'file1')"
+                required
+              />
+              <div class="mt-2 ms-3" style="color: rgb(224, 224, 224)">
+                Téléchargez votre fichier pertinent. Taille maximale du fichier
+                50 Mo
+              </div>
+            </div>
+
+            <div class="form-group mt-3">
+              <label>Redoublement</label>
+              <div class="form-check">
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  id="un-ans2"
+                  name="redoublement2"
+                  value="un ans"
+                  [(ngModel)]="redoublement2"
+                />
+                <label class="form-check-label me-5" for="un-ans2"
+                  >Un ans
+                </label>
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  id="deux-ans2"
+                  name="redoublement2"
+                  value="deux ans"
+                  [(ngModel)]="redoublement2"
+                />
+                <label class="form-check-label me-5" for="deux-ans2"
+                  >Deux ans
+                </label>
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  id="non2"
+                  name="redoublement2"
+                  value="non"
+                  [(ngModel)]="redoublement2"
+                />
+                <label class="form-check-label" for="non2">Non </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>MOYENNE DE 2EME ANNÉE</label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="MOYENNE DE 2EME ANNÉE"
+                name="moy_2eme"
+                #moy_2eme="ngModel"
+                ngModel
+                min="0"
+                required
+                [(ngModel)]="dataArray.moy_2eme"
+              />
+            </div>
+            <div class="form-group">
+              <label>SESSION</label>
+              <select
+                class="form-select"
+                name="session_2eme"
+                #session_2eme="ngModel"
+                ngModel
+                required
+                [(ngModel)]="dataArray.session_2eme"
+              >
+                <option selected>SÉLECTIONNEZ LA SESSION DE 2EME ANNÉE</option>
+                <option value="principal">Principal</option>
+                <option value="controle">Contrôle</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>CRÉDIT DE 2EME ANNÉE</label>
+              <input
+                type="number"
+                class="form-control"
+                name="credit_2eme"
+                #credit_2eme="ngModel"
+                ngModel
+                placeholder="CRÉDIT DE 2EME ANNÉE"
+                min="0"
+                required
+                [(ngModel)]="dataArray.credit_2eme"
+              />
+            </div>
+            <div class="form-group">
+              <label for="formFile" class="form-label"
+                >RELEVE DE NOTE 2EME ANNÉE</label
+              >
+              <input
+                class="form-control"
+                type="file"
+                id="formFile"
+                name="file_2eme"
+                #file_2eme="ngModel"
+                ngModel
+                (change)="onFileSelected($event, 'file2')"
+                required
+              />
+              <div class="mt-2 ms-3" style="color: rgb(224, 224, 224)">
+                Téléchargez votre fichier pertinent. Taille maximale du fichier
+                50 Mo
+              </div>
+            </div>
+
+            <div class="form-group mt-3">
+              <label>Redoublement</label>
+              <div class="form-check">
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  id="un-ans3"
+                  name="redoublement3"
+                  value="un ans"
+                  [(ngModel)]="redoublement3"
+                />
+                <label class="form-check-label me-5" for="un-ans3"
+                  >Un ans
+                </label>
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  id="deux-ans3"
+                  name="redoublement3"
+                  value="deux ans"
+                  [(ngModel)]="redoublement3"
+                />
+                <label class="form-check-label me-5" for="deux-ans3"
+                  >Deux ans
+                </label>
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  id="non3"
+                  name="redoublement3"
+                  value="non"
+                  [(ngModel)]="redoublement3"
+                />
+                <label class="form-check-label" for="non3">Non </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>MOYENNE DE 3EME ANNÉE</label>
+              <input
+                type="number"
+                class="form-control"
+                name="moy_3eme"
+                #moy_3eme="ngModel"
+                ngModel
+                min="0"
+                placeholder="MOYENNE DE 3EME ANNÉE"
+                required
+                [(ngModel)]="dataArray.moy_3eme"
+              />
+            </div>
+            <div class="form-group">
+              <label>SESSION</label>
+              <select
+                class="form-select"
+                name="session_3eme"
+                #session_3eme="ngModel"
+                ngModel
+                [(ngModel)]="dataArray.session_3eme"
+                required
+              >
+                <option selected>SÉLECTIONNEZ LA SESSION DE 3EME ANNÉE</option>
+                <option value="principal">Principal</option>
+                <option value="controle">Contrôle</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>CRÉDIT DE 3EME ANNÉE</label>
+              <input
+                type="number"
+                class="form-control"
+                name="credit_3eme"
+                #credit_3eme="ngModel"
+                ngModel
+                min="0"
+                placeholder="CRÉDIT DE 3EME ANNÉE"
+                required
+                [(ngModel)]="dataArray.credit_3eme"
+              />
+            </div>
+            <div class="form-group">
+              <label for="formFile" class="form-label"
+                >RELEVE DE NOTE 3EME ANNÉE</label
+              >
+              <input
+                class="form-control"
+                type="file"
+                id="formFile"
+                name="file_3eme"
+                #file_3eme="ngModel"
+                ngModel
+                (change)="onFileSelected($event, 'file3')"
+                required
+              />
+              <div class="mt-2 ms-3" style="color: rgb(224, 224, 224)">
+                Téléchargez votre fichier pertinent. Taille maximale du fichier
+                50 Mo
+              </div>
+            </div>
+            <div class="alert alert-success py-3 my-3" *ngIf="messageSucc">
+              {{ messageSucc }}
+            </div>
+            <button type="submit" class="btn btn-primary bg-lb mt-3 py-2 px-4">
+              Modifier
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer py-3">
+        <button
+          class="btn btn-danger profile-button py-2 px-4"
+          type="button"
+          data-bs-dismiss="modal"
+        >
+          Fermer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

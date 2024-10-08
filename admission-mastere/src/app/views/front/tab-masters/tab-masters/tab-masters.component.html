@@ -1,0 +1,117 @@
+<section class="p-1" style="margin-top: 7%">
+  <div class="container mt-3 bg-body pb-5">
+    <div class="justify-content-center">
+      <div class="justify-content-center py-2">
+        <div class="alert alert-success py-3 my-3" *ngIf="messageSucc">
+          {{ messageSucc }}
+        </div>
+        <div class="alert alert-danger py-3 my-3" *ngIf="messageerr">
+          {{ messageerr }}
+        </div>
+        <h1 id="h1-1" style="text-align: center">
+          Dates limites de préinscription en mastères
+        </h1>
+      </div>
+      <div class="col-xl-12">
+        <div class="table100 ver1 m-b-110">
+          <div class="table100-head">
+            <table>
+              <thead>
+                <tr class="row100 head">
+                  <th class="cell100 column1th bg-dark">Établissement</th>
+                  <th class="cell100 column2th bg-dark">Mastère</th>
+                  <th class="cell100 column4th bg-dark">Date d'ouverture</th>
+                  <th class="cell100 column5th bg-dark">Date d'expiration</th>
+                  <th class="cell100 column5 bg-dark">Détails</th>
+                  <th class="cell100 column5 bg-dark"></th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div class="table100-body js-pscroll">
+            <table>
+              <tbody>
+                <tr class="row100 body" *ngFor="let item of dataArray">
+                  <td class="cell100 column1">{{ item.etablissement }}</td>
+                  <td class="cell100 column2">{{ item.nom_m }}</td>
+                  <td class="cell100 column4 text-success">
+                    {{ item.date_o | date : "yyyy-MM-dd" }}
+                  </td>
+                  <td class="cell100 column5 text-danger">
+                    {{ item.date_f | date : "yyyy-MM-dd" }}
+                  </td>
+                  <td class="cell100 column5 ali">
+                    <button
+                      type="button"
+                      class="button btn--radius-2 btn--blue"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal2"
+                      (click)="detmas(item.details)"
+                    >
+                      <i class="bi bi-file-text-fill"></i>
+                    </button>
+                  </td>
+                  <td class="cell100 column5 ali">
+                    <button
+                      type="button"
+                      class="button btn--radius-2 btn--green"
+                      (click)="idmas(item.cm_id)"
+                    >
+                      candidater
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Details Modal -->
+<div
+  class="modal fade"
+  id="exampleModal2"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
+    style="margin-left: 20%"
+  >
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header py-3" style="padding: 30px 30px">
+        <h1
+          class="modal-title fs-4"
+          style="margin-left: 40%; color: #dd0025"
+          id="exampleModalLabel"
+        >
+          Details sur le mastére
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="m-2">
+          <h5 style="color: #dcdcdc">{{ datadet.details }}</h5>
+        </div>
+      </div>
+      <div class="modal-footer py-3">
+        <button
+          type="button"
+          class="button btn--radius-2 btn--secondary me-3"
+          data-bs-dismiss="modal"
+        >
+          Fermer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

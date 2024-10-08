@@ -1,0 +1,76 @@
+<section class="p-1">
+  <div class="container mt-3 bg-body pb-5">
+    <div class="justify-content-center">
+      <div class="justify-content-center py-2">
+        <h1 id="h1-1" style="text-align: center">
+          Liste des candidats à la maîtrise
+        </h1>
+      </div>
+      <div class="col-xl-12">
+        <div class="table100 ver1 m-b-110">
+          <div class="table100-head">
+            <table>
+              <thead>
+                <tr class="row100 head">
+                  <th class="cell100 column1th bg-dark">NB</th>
+                  <th class="cell100 column2th bg-dark">NOM</th>
+                  <th class="cell100 column4th bg-dark">PRÉNOM</th>
+                  <th class="cell100 column5th bg-dark">CIN</th>
+                  <th class="cell100 column7th bg-dark">État Du Candidatuer</th>
+                  <th class="cell100 column6th bg-dark">DOSSIER DU CANDIDAT</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div class="table100-body js-pscroll">
+            <table>
+              <tbody>
+                <tr
+                  class="row100 body"
+                  *ngFor="let item of dataArray; index as i"
+                >
+                  <td class="cell100 column1">{{ i + 1 }}</td>
+                  <td class="cell100 column2">{{ item.nom }}</td>
+                  <td class="cell100 column4">
+                    {{ item.prenom }}
+                  </td>
+                  <td class="cell100 column5">
+                    {{ item.passport_cin }}
+                  </td>
+                  <td class="cell100 column7">
+                    <span
+                      class="text-primary"
+                      *ngIf="item.statut === 'En Attente'"
+                      >{{ item.statut }}</span
+                    >
+                    <span
+                      style="color: #54b435"
+                      *ngIf="item.statut === 'Accepté'"
+                      >{{ item.statut }}</span
+                    >
+                    <span
+                      class="text-danger"
+                      *ngIf="item.statut === 'Refusé'"
+                      >{{ item.statut }}</span
+                    >
+                  </td>
+                  <td class="cell100 column6 ali">
+                    <button
+                      type="button"
+                      class="button btn--radius-2 btn--blue"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal2"
+                      (click)="fileuser(item.user_id)"
+                    >
+                      <i class="bi bi-file-text-fill"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,100 @@
+<section id="section-wrapper" class="p-4 pb-5">
+  <div
+    id="main-wrapper"
+    class="container mt-4 bg-body"
+    style="background-color: #e8e8e8"
+  >
+    <div class="row justify-content-center" style="background-color: #e8e8e8">
+      <div class="col-xl-10 shadow-lg p-4 mb-5 rounded bg-dark">
+        <div class="card border-0 bg-dark">
+          <div class="card-body p-0">
+            <div class="row no-gutters">
+              <div class="col-lg-6 text-light">
+                <div class="p-5">
+                  <div class="mb-5">
+                    <h3 class="h4 font-weight-bold text-theme">CONNEXION</h3>
+                  </div>
+
+                  <h6 class="h5 mb-0">BIENVENUE</h6>
+                  <p class="mt-2 mb-3">
+                    Entrez votre Cin et votre mot de passe pour accéder.
+                  </p>
+
+                  <form (ngSubmit)="loginuser(l)" #l="ngForm">
+                    <div class="form-group mb-5">
+                      <label for="exampleInputEmail1">CIN</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        name="passport_cin"
+                        #passport_cin="ngModel"
+                        ngModel
+                        required
+                      />
+                      <div
+                        class="alert alert-danger py-2 my-3"
+                        *ngIf="passport_cin.errors?.['required'] && passport_cin.touched"
+                      >
+                        le cin est obligatoire
+                      </div>
+                    </div>
+                    <div class="form-group mb-5">
+                      <label for="exampleInputPassword1">MOT DE PASSE</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="exampleInputPassword1"
+                        name="password"
+                        #password="ngModel"
+                        ngModel
+                        minlength="8"
+                        required
+                      />
+                      <div
+                        class="alert alert-danger py-2 my-3"
+                        style="margin-right: 5.5%"
+                        *ngIf="
+                          password.invalid &&
+                          (password.dirty || password.touched)
+                        "
+                      >
+                        <div *ngIf="password.errors?.['required']">
+                          le mot de passe est obligatoire
+                        </div>
+                        <div *ngIf="password.errors?.['minlength']">
+                          Le mot de passe doit avoir au moins 6 caractères.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="alert alert-danger my-2" *ngIf="messageerr">
+                      {{ messageerr }}
+                    </div>
+                    <button type="submit" class="btn btn-theme">
+                      CONNEXION
+                    </button>
+                    <a href="#lo" class="forgot-link float-right text-info ms-3"
+                      >Mot de passe oublié?</a
+                    >
+                  </form>
+                </div>
+              </div>
+
+              <div class="col-lg-6 d-none d-lg-inline-block">
+                <div class="account-block rounded-right">
+                  <div class="overlay rounded-right"></div>
+                  <div class="account-testimonial">
+                    <img src="/assets/Images/logo/logo-nobg3.png" width="250" />
+                    <h4 class="text-white mb-4">BIENVENUE</h4>
+                    <p>-Université de jendouba-</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end card-body -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

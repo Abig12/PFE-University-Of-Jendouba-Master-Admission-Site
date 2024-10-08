@@ -1,0 +1,424 @@
+<div class="wrapper wrapper--w1050 mb-4">
+  <div class="card card-5">
+    <div class="card-heading">
+      <h2 class="title">Ajouter une grille d'évaluation</h2>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="addeval(a)" #a="ngForm">
+        <h1 class="mb-5 text-danger">Malus</h1>
+        <div class="form">
+          <div class="name fw-bold my-3">REDOUBLEMENT</div>
+          <div class="value">
+            <div class="input-group">
+              <input
+                class="input--style-5"
+                type="number"
+                placeholder="REDOUBLEMENT"
+                name="malus_redoublement"
+                #malus_redoublement="ngModel"
+                ngModel
+                required
+              />
+            </div>
+            <div
+              class="alert alert-danger py-2 my-3"
+              *ngIf="malus_redoublement.errors?.['required'] && malus_redoublement.touched"
+            >
+              le nom du master est obligatoire
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <div class="name fw-bold my-3">CONTRÔLE</div>
+          <div class="value">
+            <div class="input-group">
+              <input
+                class="input--style-5"
+                type="number"
+                placeholder="CONTRÔLE"
+                name="malus_controle"
+                #malus_controle="ngModel"
+                ngModel
+                required
+              />
+            </div>
+            <div
+              class="alert alert-danger py-2 my-3"
+              *ngIf="malus_controle.errors?.['required'] && malus_controle.touched"
+            >
+              le nom du master est obligatoire
+            </div>
+          </div>
+        </div>
+        <h1 class="mt-4 mb-5 text-danger">Bonus</h1>
+        <div class="form">
+          <div class="name fw-bold my-3">BONUS DE CRÉDIT FAIBLE</div>
+          <div class="value">
+            <div class="input-group">
+              <input
+                class="input--style-5 py-1"
+                type="number"
+                placeholder="BONUS DE CRÉDIT FAIBLE"
+                name="bonus_1"
+                #bonus_1="ngModel"
+                ngModel
+                required
+              />
+            </div>
+            <div
+              class="alert alert-danger py-2 my-3"
+              *ngIf="bonus_1.errors?.['required'] && bonus_1.touched"
+            >
+              le Bonus de crédit faible est obligatoire
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <div class="name fw-bold my-3">BONUS DE CRÉDIT MOYEN</div>
+          <div class="value">
+            <div class="input-group">
+              <input
+                class="input--style-5 py-1"
+                type="number"
+                placeholder="BONUS DE CRÉDIT MOYEN"
+                name="bonus_2"
+                #bonus_2="ngModel"
+                ngModel
+                required
+              />
+            </div>
+            <div
+              class="alert alert-danger py-2 my-3"
+              *ngIf="bonus_2.errors?.['required'] && bonus_2.touched"
+            >
+              le Bonus de crédit moyen est obligatoire
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <div class="name fw-bold my-3">BONUS DE CRÉDIT ÉLEVÉ</div>
+          <div class="value">
+            <div class="input-group">
+              <input
+                class="input--style-5 py-1"
+                type="number"
+                placeholder="BONUS DE CRÉDIT ÉLEVÉ"
+                name="bonus_3"
+                #bonus_3="ngModel"
+                ngModel
+                required
+              />
+            </div>
+            <div
+              class="alert alert-danger py-2 my-3"
+              *ngIf="bonus_3.errors?.['required'] && bonus_3.touched"
+            >
+              le Bonus de crédit élevé est obligatoire
+            </div>
+          </div>
+        </div>
+        <div class="alert alert-success py-3 my-3" *ngIf="messageaddSucc">
+          {{ messageaddSucc }}
+        </div>
+        <div>
+          <button class="btn btn--radius-2 btn--red mt-4" type="submit">
+            Ajouter
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<section class="p-2 m-5">
+  <div class="container bg-body pb-5">
+    <div class="justify-content-center">
+      <div class="col-xl-12">
+        <div class="table100 ver1 m-b-110">
+          <div class="table100-head">
+            <table>
+              <thead>
+                <tr class="row100 head">
+                  <th class="cell100 column2 bg-dark"></th>
+                  <th class="cell100 column-th bg-dark">REDOUBLEMENT</th>
+                  <th class="cell100 columnp-th bg-dark">CONTRÔLE</th>
+                  <th class="cell100 columne-th bg-dark">BONUS FAIBLE</th>
+                  <th class="cell100 columnt-th bg-dark">BONUS MOYEN</th>
+                  <th class="cell100 columnc-th bg-dark">BONUS ÉLEVÉ</th>
+                  <th class="cell100 column5 bg-dark"></th>
+                  <th class="cell100 column5 bg-dark"></th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div class="table100-body js-pscroll">
+            <table>
+              <tbody>
+                <tr
+                  class="row100 body"
+                  *ngFor="let item of dataArray; index as i"
+                >
+                  <td class="cell100 column1">{{ i + 1 }}</td>
+                  <td class="cell100 column">{{ item.malus_redoublement }}</td>
+                  <td class="cell100 columnp">{{ item.malus_controle }}</td>
+                  <td class="cell100 columne">{{ item.bonus_1 }}</td>
+                  <td class="cell100 columnt">{{ item.bonus_2 }}</td>
+                  <td class="cell100 columnc">{{ item.bonus_3 }}</td>
+                  <td class="cell100 column5 ali">
+                    <button
+                      type="button"
+                      class="button btn--radius-2 btn--green"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                      (click)="
+                        upteval(
+                          item.eval_id,
+                          item.malus_redoublement,
+                          item.malus_controle,
+                          item.bonus_1,
+                          item.bonus_2,
+                          item.bonus_3
+                        )
+                      "
+                    >
+                      <i class="bi bi-pen"></i>
+                    </button>
+                  </td>
+                  <td class="cell100 column5 ali">
+                    <button
+                      type="button"
+                      class="button btn--radius-2 btn--red"
+                      data-bs-toggle="modal"
+                      data-bs-target="#deleteModal"
+                      (click)="delbutton(item.eval_id, i + 1)"
+                    >
+                      <i class="bi bi-trash3-fill"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
+    style="margin-left: 20%"
+  >
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header py-3" style="padding: 30px 30px">
+        <h1
+          class="modal-title fs-4"
+          style="margin-left: 40%; color: #dd0025"
+          id="exampleModalLabel"
+        >
+          Modifier la grille d'évaluation
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="m-2">
+          <form class="form-detail" (ngSubmit)="updateeval(u)" #u="ngForm">
+            <div class="ms-5">
+              <h1 class="mb-4" style="color: #dd0025">Malus</h1>
+
+              <div class="form">
+                <label for="full-name">REDOUBLEMENT</label>
+                <input
+                  type="text"
+                  id="nom"
+                  class="input-text"
+                  placeholder="NOM"
+                  name="malus_redoublement"
+                  #malus_redoublement="ngModel"
+                  ngModel
+                  [(ngModel)]="dataeval.malus_redoublement"
+                  required
+                />
+                <div
+                  class="alert alert-danger py-2 my-3"
+                  style="margin-right: 5.5%"
+                  *ngIf="malus_redoublement.errors?.['required'] && malus_redoublement.touched"
+                >
+                  le nom est obligatoire
+                </div>
+              </div>
+              <div class="form">
+                <label for="full-name">CONTRÔLE</label>
+                <input
+                  type="text"
+                  id="prenom"
+                  class="input-text"
+                  placeholder="PRÉNOM"
+                  name="malus_controle"
+                  #malus_controle="ngModel"
+                  ngModel
+                  [(ngModel)]="dataeval.malus_controle"
+                  required
+                />
+                <div
+                  class="alert alert-danger py-2 my-3"
+                  style="margin-right: 5.5%"
+                  *ngIf="malus_controle.errors?.['required'] && malus_controle.touched"
+                >
+                  le prénom est obligatoire
+                </div>
+              </div>
+              <h1 class="mt-3 mb-4" style="color: #dd0025">Bonus</h1>
+              <div class="form">
+                <label for="full-name">BONUS DE CRÉDIT FAIBLE</label>
+                <input
+                  type="text"
+                  id="email"
+                  class="input-text"
+                  placeholder="EMAIL"
+                  name="bonus_1"
+                  #bonus_1="ngModel"
+                  ngModel
+                  [(ngModel)]="dataeval.bonus_1"
+                  required
+                />
+                <div
+                  class="alert alert-danger py-2 my-3"
+                  style="margin-right: 5.5%"
+                  *ngIf="bonus_1.errors?.['required'] && bonus_1.touched"
+                >
+                  le nom est obligatoire
+                </div>
+              </div>
+              <div class="form">
+                <label for="full-name">BONUS DE CRÉDIT MOYEN </label>
+                <input
+                  type="text"
+                  id="telephone"
+                  class="input-text"
+                  placeholder="NOMBRE DE TELEPHONE"
+                  name="bonus_2"
+                  #bonus_2="ngModel"
+                  ngModel
+                  [(ngModel)]="dataeval.bonus_2"
+                  required
+                />
+                <div
+                  class="alert alert-danger py-2 my-3"
+                  style="margin-right: 5.5%"
+                  *ngIf="bonus_2.errors?.['required'] && bonus_2.touched"
+                >
+                  le telephone est obligatoire
+                </div>
+              </div>
+              <div class="form">
+                <label for="full-name">BONUS DE CRÉDIT ÉLEVÉ </label>
+                <input
+                  type="text"
+                  id="passport_cin"
+                  class="input-text"
+                  placeholder="PASSEPORT/CIN"
+                  name="bonus_3"
+                  #bonus_3="ngModel"
+                  ngModel
+                  [(ngModel)]="dataeval.bonus_3"
+                  required
+                />
+                <div
+                  class="alert alert-danger py-2 my-3"
+                  style="margin-right: 5.5%"
+                  *ngIf="bonus_3.errors?.['required'] && bonus_3.touched"
+                >
+                  le cin est obligatoire
+                </div>
+              </div>
+              <div class="alert alert-success py-3 my-3" *ngIf="messageSucc">
+                {{ messageSucc }}
+              </div>
+              <button type="submit" class="button btn--radius-2 btn--red me-3">
+                Modifier
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer py-3">
+        <button
+          type="button"
+          class="button btn--radius-2 btn--secondary me-3"
+          data-bs-dismiss="modal"
+        >
+          Fermer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Modal -->
+
+<div
+  class="modal fade"
+  id="deleteModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+    style="margin-left: 30%"
+  >
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header py-3" style="padding: 30px 30px">
+        <h1
+          class="modal-title fs-4"
+          style="margin-left: 30%; color: #dd0025"
+          id="exampleModalLabel"
+        >
+          supprimer la grille d'évaluation
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="m-5">
+          <h4>Voulez-vous supprimer cette grille d'évaluation ?</h4>
+        </div>
+      </div>
+      <div class="modal-footer py-3">
+        <button
+          type="button"
+          class="button btn--radius-2 btn--red me-3"
+          data-bs-dismiss="modal"
+          (click)="deleteeval(deleteb.eval_id, deleteb.i + 1)"
+        >
+          oui
+        </button>
+        <button
+          type="button"
+          class="button btn--radius-2 btn--secondary me-3"
+          data-bs-dismiss="modal"
+        >
+          non
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

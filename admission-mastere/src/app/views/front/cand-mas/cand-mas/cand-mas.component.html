@@ -1,0 +1,210 @@
+<section>
+  <div
+    class="container bg-dark text-white mt-5 mb-4"
+    style="border-radius: 10px"
+  >
+    <div class="row">
+      <div class="col-md-5 border-right">
+        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+          <img
+            class="rounded-circle mt-5"
+            width="150px"
+            src="https://cdn-icons-png.flaticon.com/512/6997/6997484.png"
+            *ngIf="infoArray.sexe == 'Garçon'"
+          />
+          <img
+            class="rounded-circle mt-5"
+            width="150px"
+            src="https://cdn-icons-png.flaticon.com/512/6997/6997660.png"
+            *ngIf="infoArray.sexe == 'Fille'"
+          /><span class="mt-3" style="font-size: 30px; font-weight: 600"
+            >{{ infoArray.nom }} {{ infoArray.prenom }}</span
+          >
+          <div class="row mt-4">
+            <div class="d-flex align-items-center">
+              <label class="labels me-4 lightblue" style="font-size: 18px"
+                >EMAIL :</label
+              >
+              <h5 class="st">{{ infoArray.email }}</h5>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="d-flex align-items-center">
+              <label class="labels me-4 lightblue" style="font-size: 18px"
+                >PASSEPORT/CIN :</label
+              >
+              <h5 class="st">{{ infoArray.passport_cin }}</h5>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="d-flex align-items-center">
+              <label class="labels me-4 lightblue" style="font-size: 18px"
+                >NUMÉRO DE TÉLÉPHONE :</label
+              >
+              <h5 class="st">{{ infoArray.telephone }}</h5>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="d-flex align-items-center">
+              <label class="labels me-4 lightblue" style="font-size: 18px"
+                >DATE DE NAISSANCE :</label
+              >
+              <h5 class="st">
+                {{ infoArray.naissance | date : "yyyy-MM-dd" }}
+              </h5>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="d-flex align-items-center">
+              <label class="labels me-4 lightblue" style="font-size: 18px"
+                >VILLE DE NAISSANCE :</label
+              >
+              <h5 class="st">{{ infoArray.ville_naissance }}</h5>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="d-flex align-items-center">
+              <label class="labels me-4 lightblue" style="font-size: 18px"
+                >GOUVERNORAT :</label
+              >
+              <h5 class="st">{{ infoArray.gouvernorat }}</h5>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="d-flex align-items-center">
+              <label class="labels me-4 lightblue" style="font-size: 18px"
+                >PAYS :</label
+              >
+              <h5 class="st">{{ infoArray.pays }}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7 border-right">
+        <div class="p-3 py-5">
+          <div class="d-flex justify-content-center align-items-center mb-3">
+            <h4 class="text-center" style="font-size: 40px; color: #b3253d">
+              MES CANDIDATURES AU MASTÈRE
+            </h4>
+          </div>
+
+          <div class="d-flex py-1 mt-5 mb-3">
+            <div class="col-md-7">
+              <h4 class="h5title lightblue">Mastère</h4>
+            </div>
+            <div class="col-md-3">
+              <h4 class="h5title lightblue">État Candidature</h4>
+            </div>
+            <div class="col-md-2">
+              <h4 class="h5title lightblue">Supprimer</h4>
+            </div>
+          </div>
+
+          <div
+            class="d-flex align-items-center py-1 mb-3 bg-white text-dark rounded"
+            *ngFor="let item of umasArray; index as i"
+          >
+            <div class="col-md-7">
+              <h4 class="h4title mt-2">{{ item.nom_m }}</h4>
+            </div>
+            <div class="col-md-3">
+              <h4
+                class="h4title text-primary mt-2 ms-4"
+                *ngIf="item.statut === 'En Attente'"
+              >
+                {{ item.statut }}
+              </h4>
+              <h4
+                class="h4title text-success mt-2 ms-4"
+                *ngIf="item.statut === 'Accepté'"
+              >
+                {{ item.statut }}
+              </h4>
+              <h4
+                class="h4title text-danger mt-2 ms-4"
+                *ngIf="item.statut === 'Refusé'"
+              >
+                {{ item.statut }}
+              </h4>
+            </div>
+            <div class="col-md-2">
+              <button
+                type="button"
+                *ngIf="item.statut !== 'Accepté' && item.statut !== 'Refusé'"
+                class="btn btn-danger profile-button py-2 px-4"
+                data-bs-toggle="modal"
+                data-bs-target="#deleteModal"
+                (click)="delbutton(item.usermas_id, i)"
+              >
+                <i class="bi bi-trash3-fill"></i>
+              </button>
+            </div>
+          </div>
+          <div class="mt-5 text-center">
+            <button
+              class="btn btn-danger profile-button py-2 px-4"
+              type="button"
+              (click)="ex()"
+            >
+              Fermer
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Delete Modal -->
+
+<div
+  class="modal fade"
+  id="deleteModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+    style="margin-left: 25%"
+  >
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header py-3" style="padding: 30px 30px">
+        <h1
+          class="modal-title fs-4"
+          style="margin-left: 29%; color: #dd0025"
+          id="exampleModalLabel"
+        >
+          Supprimer le cours de master
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="m-5">
+          <h4 class="h5title">Voulez-vous supprimer ce coure de master ?</h4>
+        </div>
+      </div>
+      <div class="modal-footer py-3">
+        <button
+          type="button"
+          class="btn btn-danger profile-button py-2 px-4 me-3"
+          data-bs-dismiss="modal"
+          (click)="deleteusermas(delmas.usermas_id, delmas.i)"
+        >
+          oui
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary profile-button py-2 px-4 me-3"
+          data-bs-dismiss="modal"
+        >
+          non
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

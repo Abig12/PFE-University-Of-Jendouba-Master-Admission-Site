@@ -1,0 +1,119 @@
+<div class="wrapper wrapper--w1050 mb-4">
+  <div class="card card-5">
+    <div class="card-heading">
+      <h2 class="title">Ajouter des cours de mastères</h2>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="addcourse(a)" #a="ngForm">
+        <div class="form">
+          <div class="name fw-bold my-3">NOM DU COURS DE mastére</div>
+          <div class="value">
+            <div class="input-group">
+              <input
+                class="input--style-5"
+                type="text"
+                placeholder="NOM"
+                name="nom_m"
+                #nom_m="ngModel"
+                ngModel
+                pattern="[a-zA-Z\s]+"
+                required
+              />
+            </div>
+            <div
+              class="alert alert-danger py-2 my-3"
+              *ngIf="nom_m.invalid && (nom_m.dirty || nom_m.touched)"
+            >
+              <div *ngIf="nom_m.errors?.['required']">
+                Le nom est obligatoire.
+              </div>
+              <div *ngIf="nom_m.errors?.['pattern']">
+                Le nom doit être une chaîne de caractères.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <div class="name fw-bold my-3">DATE D'OUVERTURE</div>
+          <div class="value">
+            <div class="input-group">
+              <input
+                class="input--style-5 py-1"
+                type="date"
+                name="date_o"
+                #date_o="ngModel"
+                ngModel
+                required
+              />
+            </div>
+            <div
+              class="alert alert-danger py-2 my-3"
+              *ngIf="date_o.errors?.['required'] && date_o.touched"
+            >
+              le date d'ouverture est obligatoire
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <div class="name fw-bold my-3">DATE D'EXPIRATION</div>
+          <div class="value">
+            <div class="input-group">
+              <input
+                class="input--style-5 py-1"
+                type="date"
+                name="date_f"
+                #date_f="ngModel"
+                ngModel
+                required
+              />
+            </div>
+            <div
+              class="alert alert-danger py-2 my-3"
+              *ngIf="date_f.errors?.['required'] && date_f.touched"
+            >
+              le date d'expiration est obligatoire
+            </div>
+          </div>
+        </div>
+
+        <div class="form">
+          <div class="name fw-bold my-3 fw-bold">DETAILS DE MASTER</div>
+          <div class="mb-3">
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              rows="3"
+              style="
+                background: #e5e5e5;
+                font-size: 16px;
+                color: #555;
+                padding-bottom: 20%;
+              "
+              name="details"
+              #details="ngModel"
+              ngModel
+              required
+            ></textarea>
+            <div
+              class="alert alert-danger py-2 my-3"
+              *ngIf="details.errors?.['required'] && details.touched"
+            >
+              le details est obligatoire
+            </div>
+          </div>
+        </div>
+        <div class="alert alert-success py-3 my-3" *ngIf="messageaddSucc">
+          {{ messageaddSucc }}
+        </div>
+        <div class="alert alert-danger py-2 my-3" *ngIf="messageerr">
+          {{ messageerr }}
+        </div>
+        <div>
+          <button class="btn btn--radius-2 btn--red mt-4" type="submit">
+            Ajouter
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
