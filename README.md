@@ -64,10 +64,3 @@ University Admin Portal
 
 Global Admin Portal
 !Global Admin Portal
-
-
-### Instructions for Adding Images
-1. **Upload Images to Your Repository**: Place your images in a directory within your project, such as `images/`.
-2. **Update Image Paths**: Replace `path/to/your-image.png` with the actual path to your images in the repository.
-
-Feel free to customize the text and sections as needed. Let me know if you need any more help!
