@@ -32,10 +32,10 @@ The BreadcrumbsPFE-University-Of-Jendouba-Master-Admission-Site project is desig
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/admission-mastere.git
+   git clone https://github.com/your-username/admission-mastere.git](https://github.com/Abig12/PFE-University-Of-Jendouba-Master-Admission-Site.git
 
 Navigate to the project directory:
-cd admission-mastere
+cd project file
 
 Install dependencies for the backend:
 cd backend
