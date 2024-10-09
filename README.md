@@ -71,3 +71,5 @@ University Admin Portal
 Global Admin Portal
 ![AdmissionMastere (6)](https://github.com/user-attachments/assets/c351fcb8-d61b-4438-b7fc-cf31ec580615)
 
+## License
+created by Med Aziz Chorfi
