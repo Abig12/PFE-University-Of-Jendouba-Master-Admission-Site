@@ -2,6 +2,10 @@
 
 A web application for managing master's degree applications at Université de Jendouba.
 
+![AdmissionMastere (5)](https://github.com/user-attachments/assets/1d389e9c-16ad-48fe-8656-0454d8d9f0ea)
+![AdmissionMastere (4)](https://github.com/user-attachments/assets/7bbb3b75-b5ba-4bb7-8cad-4f4958c86d7c)
+
+
 ## Table of Contents
 - Introduction
 - Features
@@ -57,10 +61,11 @@ ng serve
 
 Screenshots
 Candidate Portal
-!Candidate Portal
+![AdmissionMastere (7)](https://github.com/user-attachments/assets/cc28101e-57e7-489b-b1a1-1b287c96b941)
 
 University Admin Portal
 !University Admin Portal
 
 Global Admin Portal
-!Global Admin Portal
+![AdmissionMastere (6)](https://github.com/user-attachments/assets/c351fcb8-d61b-4438-b7fc-cf31ec580615)
+
